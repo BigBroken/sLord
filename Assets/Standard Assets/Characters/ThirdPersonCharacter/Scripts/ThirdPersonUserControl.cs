@@ -17,6 +17,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Start()
         {
             // get the transform of the main camera
+			Debug.Log(m_Cam);
             if (Camera.main != null)
             {
                 m_Cam = Camera.main.transform;
@@ -27,7 +28,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     "Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls.", gameObject);
                 // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
             }
-
+			Debug.Log(m_Cam);
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
@@ -51,6 +52,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character
+
             if (m_Cam != null)
             {
                 // calculate camera relative direction to move:
