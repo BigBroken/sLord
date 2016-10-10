@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MainCharacterController : MonoBehaviour {
 
-	public float moveSpeed = 0.5f;
+	public float moveSpeed = 4f;
 	private Vector3 moveDirection;
 	private CharacterController controller;
 
@@ -13,9 +13,9 @@ public class MainCharacterController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		moveDirection = new Vector3(Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 		moveDirection = moveDirection.normalized * moveSpeed;
-		controller.Move (moveDirection);
+		controller.Move (moveDirection * Time.deltaTime);
 	}
 }
