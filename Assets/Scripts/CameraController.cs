@@ -41,7 +41,6 @@ public class CameraController : MonoBehaviour {
 			screenYOffset = screenYOffset * (-1) / Screen.height * -maxCameraY;
 		}
 		screenOffset = new Vector3 (screenXOffset, 0, screenYOffset);
-		Debug.Log (screenOffset);
 
 		// Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
 		transform.position = player.transform.position + offset + screenOffset;

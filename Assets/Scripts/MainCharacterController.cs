@@ -14,7 +14,8 @@ public class MainCharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		moveDirection = new Vector3(Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+		moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+		Debug.Log (moveDirection);
 		moveDirection = moveDirection.normalized * moveSpeed;
 		controller.Move (moveDirection * Time.deltaTime);
 	}
