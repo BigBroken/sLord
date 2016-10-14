@@ -1073,6 +1073,7 @@ GameObject:
   - 65: {fileID: 2100403909}
   - 23: {fileID: 2100403908}
   - 114: {fileID: 2100403912}
+  - 65: {fileID: 2100403913}
   m_Layer: 0
   m_Name: Forge
   m_TagString: Untagged
@@ -1155,3 +1156,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 233127190}
   accessArea: {fileID: 435097058}
+--- !u!65 &2100403913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2100403907}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3928747, y: 1, z: 1}
+  m_Center: {x: 0.69643736, y: 0, z: 0}

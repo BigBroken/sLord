@@ -28,16 +28,28 @@ public class CameraController : MonoBehaviour {
 		//todo: add statement to check if cameraLock is enabled
 		mousePosition = Input.mousePosition;
 		screenXOffset = mousePosition.x - Screen.width / 2;
-		if (screenXOffset >= 0) {
-			screenXOffset = screenXOffset / Screen.width * maxCameraX;	
+		if (screenXOffset >= 0 ) {
+			if (screenXOffset > Screen.width / 2) {
+				screenXOffset = Screen.width / 2;
+			}
+				screenXOffset = screenXOffset / Screen.width * maxCameraX;	
 		} else if ( screenXOffset < 0 ) {
+			if (screenXOffset < -Screen.width / 2 ) {
+				screenXOffset = -Screen.width / 2;
+			}
 			screenXOffset = screenXOffset * (-1) / Screen.width * -maxCameraX;
-		}
+		} 
 
 		screenYOffset = mousePosition.y - Screen.height / 2 ;
 		if (screenYOffset >= 0) {
+			if (screenYOffset > Screen.height / 2) {
+				screenYOffset = Screen.height / 2;
+			}
 			screenYOffset = screenYOffset / Screen.height * maxCameraY;
 		} else if ( screenYOffset < 0 ) {
+			if (screenYOffset < -Screen.height / 2) {
+				screenYOffset = -Screen.height / 2;
+			}
 			screenYOffset = screenYOffset * (-1) / Screen.height * -maxCameraY;
 		}
 		screenOffset = new Vector3 (screenXOffset, 0, screenYOffset);
