@@ -4,7 +4,9 @@ using System.Collections;
 public class gameManager : MonoBehaviour {
 
 	public static gameManager Instance;
-	private pauseController pauseController;
+	private static pauseController pauseController;
+	private static UIController uIController;
+	public static GameObject UI;
 
 
 
@@ -23,6 +25,8 @@ public class gameManager : MonoBehaviour {
 	}
 
 	public static void sleep () {
-		pauseController.pause ();
+//		pauseController.pause ();
+//		uIController.sleep ();
+//		sleepUI.gameObject.SetActive (true);
 	}
 }

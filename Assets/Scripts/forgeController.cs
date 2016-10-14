@@ -5,8 +5,8 @@ public class forgeController : MonoBehaviour {
 
 	// Use this for initialization
 	public GameObject player;
+	public BoxCollider accessArea;
 	private Renderer rend;
-	public float interactionDistance = 5.0f;
 
 
 	void Start() {
@@ -22,13 +22,11 @@ public class forgeController : MonoBehaviour {
 		rend.material.color = Color.white;
 	}
 
-	void Update () {
-		if(Input.GetButtonUp("Fire2")) {
-//			Debug.Log (Vector3.Distance (transform.position, player.transform.position));
-			if (Vector3.Distance (transform.position, player.transform.position) < interactionDistance) {
-				//open forge screen
-			}
+	void OnTriggerStay(Collider other) {
+		if (Input.GetButtonDown ("Fire2")) {
+			EventManager.TriggerEvent ("ForgeUI");
+			Debug.Log ("You can access the forge but its still just a wall");
 		}
-	
 	}
+		
 }

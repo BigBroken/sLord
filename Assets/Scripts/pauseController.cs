@@ -6,13 +6,18 @@ public class pauseController : MonoBehaviour {
 	// Use this for initialization
 	public static bool canPause = true;
 
-	public static void pause() {
+	void Start(){
+		EventManager.StartListening ("Pause", pause);
+		EventManager.StartListening ("UnPause", unPause);
+	}
+	public void pause() {
 		if (canPause) {
 			Time.timeScale = 0;
 			Debug.Log ("time.timescale = 0");
 		}
 	}
-	public static void unpause() {
+	public void unPause() {
 		Time.timeScale = 1;
+		Debug.Log ("time.timescale = 1");
 	}
 }
