@@ -5,7 +5,7 @@ public class gameManager : MonoBehaviour {
 
 	public static gameManager Instance;
 	private static pauseController pauseController;
-	private static UIController uIController;
+	private static UIController uIController;	
 	public static GameObject UI;
 
 
