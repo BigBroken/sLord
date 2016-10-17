@@ -23,6 +23,7 @@ GameObject:
   - 136: {fileID: 136000011338957714}
   - 23: {fileID: 23000014145307122}
   - 114: {fileID: 114000011443904788}
+  - 114: {fileID: 114000010341748496}
   m_Layer: 0
   m_Name: SoyBean
   m_TagString: Plant
@@ -79,6 +80,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011327959574}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114000010341748496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011327959574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552b1bb2825c5454b9964a8ba923e75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantName: Soy Bean
+  fullGrown: 12
+  soilCell: {fileID: 0}
 --- !u!114 &114000011443904788
 MonoBehaviour:
   m_ObjectHideFlags: 1

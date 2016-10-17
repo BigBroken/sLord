@@ -3,23 +3,64 @@ using System.Collections;
 
 public class SoilCellController : MonoBehaviour {
 
-
+	public bool isWatered = false;
+//	public bool isMouseOver = false;
+	public GameObject player;
+	private Renderer rend;
 	//public dictionary plant type
 	void Start () {
-		EventManager.StartListening ("Sleep", NextDay);
+		rend = GetComponent<Renderer>();
+		if (player == null) {
+			player = GameObject.FindWithTag ("Player");
+		}
+		EventManager.StartListening ("NextDay", NextDay);
 	}
 	void OnDisable(){
-		EventManager.StopListening ("Sleep", NextDay);
+		EventManager.StopListening ("NextDay", NextDay);
 	}
 	void OnDestroy(){
-		EventManager.StopListening ("Sleep", NextDay);
+		EventManager.StopListening ("NextDay", NextDay);
 	}
 
 	void NextDay () {
-	
+		//check weather
+		isWatered = false;
 	}
 
 	void Sow (int index) {
 		Debug.Log(SoilGridController.plants [index]);
+	} 
+		
+	void OnMouseOver() {
+		
+		if (Input.GetButtonDown ("Fire1")) {
+			if (Vector3.Distance(transform.position, player.transform.position) < 2.0f) {
+				//instantiate seeds plant object at soilcell transform
+				//set plant objects parent to be soilcell
+				EventManager.TriggerEvent("Sow");
+				Debug.Log("triggered Sow");
+			}
+		}
+		Debug.Log ("onMousOver");
 	}
+	void OnMouseEnter() {
+//		rend.material.color = Color.red;
+		Debug.Log ("mouseisout");
+	}
+	void OnMouseExit() {
+					
+		Debug.Log ("mouseisout");
+	}
+//
+//	void OnTriggerStay(Collider other) {
+//		if(other.tag == "Player") {
+//			if (Input.GetButtonDown ("Fire1")) {
+//				if (isMouseOver) {
+//					//if selected inventory Item is type seed
+//					EventManager.TriggerEvent ("Sow");
+//					Debug.Log ("Sowing");
+//				}
+//			}
+//		}
+//	}
 }

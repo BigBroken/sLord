@@ -23,9 +23,11 @@ public class forgeController : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (Input.GetButtonDown ("Fire2")) {
-			EventManager.TriggerEvent ("ForgeUI");
-			Debug.Log ("You can access the forge but its still just a wall");
+		if(other.tag == "Player") {
+			if (Input.GetButtonDown ("Fire2")) {
+				EventManager.TriggerEvent ("ForgeUI");
+				Debug.Log ("You can access the forge but its still just a wall");
+			}
 		}
 	}
 		
