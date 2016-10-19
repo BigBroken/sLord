@@ -8,6 +8,7 @@ public class InventoryController : MonoBehaviour {
 
 
 	public int size;
+	int selected;
 	public Item[] items;
 	public static InventoryController inventoryController;
 	public CanvasGroup canvasController;
@@ -37,6 +38,7 @@ public class InventoryController : MonoBehaviour {
 			slots[i] = Instantiate(slot);
 			slots[i].transform.SetParent (slotPanel.transform, false);
 		}
+		selected = 1;
 		isActive = false;
 		EventManager.StartListening ("ToggleInventory", toggleInventory);
 		canvasController = this.GetComponent<CanvasGroup> ();
@@ -85,7 +87,7 @@ public class InventoryController : MonoBehaviour {
 			for (int i = 0; i < items.Length; i++) {
 				if (items [i] == null) {
 					items[i] = item.clone ();
-					inventoryController.updateSprite (item, i);
+					updateSprite (i);
 					updateAmount(i);
 					break;
 				}
@@ -94,21 +96,51 @@ public class InventoryController : MonoBehaviour {
 	}
 		
 
-	public void updateSprite(Item item, int index) {
+	public void updateSprite(int index) {
 		
-		slots [index].transform.GetChild(1).GetComponent<Image>().sprite = item.item.itemIcon;
+		slots [index].transform.GetChild(1).GetComponent<Image>().sprite = items[index].item.itemIcon;
 	}
 
 	public void updateAmount(int index) {
-		slots [index].transform.GetChild (0).GetComponent<Text> ().text = items [index].numberStacked.ToString();
+		if (items[index] == null) {
+			slots [index].transform.GetChild (0).GetComponent<Text> ().text = "";
+		} else if (items [index].numberStacked == 0) {
+			removeAtIndex (index);
+		} else {
+			slots [index].transform.GetChild (0).GetComponent<Text> ().text = items [index].numberStacked.ToString();
+		}
+
 	}
 
 	public void removeAtIndex(int index) {
-
+		Destroy (items [index]);
+		updateAmount (index);
+		updateSprite (index);
 	}
 
-	public void removeItem(Item item) {
+	public void removeSelected(){
+		Destroy (items[selected]);
+		updateAmount (selected);
+		updateSprite (selected);
+	}
 
+	//this function is not tested
+	public void removeItem(Item item) {
+		for (int i = 0; i < items.Length; i++) {
+			if (items [i] != null && items [i].item.itemName == item.item.itemName) {
+				if (items [i].numberStacked <= item.numberStacked) {
+					items [i].numberStacked -= item.numberStacked;
+					updateAmount (i);
+					break;
+				}
+			}
+		}
+	}
+
+
+	public Item selectItem(int index) {
+		int selected = index;
+		return items [index];
 	}
 
 }
