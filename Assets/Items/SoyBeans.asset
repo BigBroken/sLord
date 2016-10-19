@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e48c9d1562b8415d876451e5c4e37d7, type: 3}
-  m_Name: Soy Bean Seeds
+  m_Name: SoyBeans
   m_EditorClassIdentifier: 
-  itemName: Soy Bean Seeds
-  itemIcon: {fileID: 0}
+  itemName: Soy Bean Seed
+  itemIcon: {fileID: 21300056, guid: a21b49a06e5cd4204a7143fd5bf4a904, type: 3}
   itemObject: {fileID: 0}
   isUnique: 0
-  maxStack: 1
-  destroyOnUse: 0
-  isSeed: 0
-  plant: {fileID: 0}
+  maxStack: 99
+  destroyOnUse: 1
+  isSeed: 1
+  plant: {fileID: 1000011327959574, guid: b734dea1770f5438da18ed0b623dff35, type: 2}
