@@ -7,12 +7,14 @@ public class InventoryController : MonoBehaviour {
 
 
 
-	public int size = 28;
+	public int size;
 	public Item[] items;
 	public static InventoryController inventoryController;
+	public CanvasGroup canvasController;
 	public GameObject slotPanel;
 	public GameObject slot;
 	public GameObject[] slots;
+	public bool isActive;
 
 	void Awake ()   
 	{
@@ -28,14 +30,38 @@ public class InventoryController : MonoBehaviour {
 	}
 
 	void Start() {
+		size = 28;
 		slots =  new  GameObject[size];
 		items = new Item[size];
 		for (int i = 0; i < slots.Length; i++) {
 			slots[i] = Instantiate(slot);
 			slots[i].transform.SetParent (slotPanel.transform, false);
 		}
+		isActive = false;
+		EventManager.StartListening ("ToggleInventory", toggleInventory);
+		canvasController = this.GetComponent<CanvasGroup> ();
 	}
-		
+
+	void OnDestroy() {
+		EventManager.StopListening ("ToggleInventory", toggleInventory);
+	}
+
+	public void toggleInventory(){
+		Debug.Log ("Inventory toggled");
+		isActive = !isActive;
+		Debug.Log (isActive);
+		if (isActive) {
+			EventManager.TriggerEvent ("Pause");
+		} else {
+			EventManager.TriggerEvent ("UnPause");
+		}
+		canvasController.interactable = isActive;
+		canvasController.blocksRaycasts = isActive;
+
+		int convertedBool = isActive ? 1 : 0;
+		canvasController.alpha = convertedBool;
+
+	}
 
 	public void addItem(Item item) {
 
@@ -64,9 +90,7 @@ public class InventoryController : MonoBehaviour {
 					break;
 				}
 			}
-		} else {
-			Debug.Log ("inventory is full");
-		}
+		} 
 	}
 		
 
@@ -83,9 +107,8 @@ public class InventoryController : MonoBehaviour {
 
 	}
 
-	public void removeItem(InventoryItem item) {
+	public void removeItem(Item item) {
 
 	}
-		
 
 }

@@ -27,4 +27,11 @@ public class UIController : MonoBehaviour {
 	void sleepCancel() {
 		sleepUI.SetActive (false);
 	}
+
+	void Update() {
+		if(Input.GetButtonDown("Inventory")) {
+			Debug.Log ("Inventory triggered");
+			EventManager.TriggerEvent ("ToggleInventory");
+		}
+	}
 }

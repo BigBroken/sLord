@@ -409,6 +409,11 @@ Prefab:
       propertyPath: size
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 223000013408890066, guid: 720bfd01955814342bb408a218b0affd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 720bfd01955814342bb408a218b0affd, type: 2}
   m_IsPrefabParent: 0
@@ -1001,6 +1006,22 @@ Transform:
   - {fileID: 1650579870}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!1 &579427233 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012694943756, guid: 720bfd01955814342bb408a218b0affd,
+    type: 2}
+  m_PrefabInternal: {fileID: 307486354}
+--- !u!225 &579427238
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579427233}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &738547072 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000013762653500, guid: 720bfd01955814342bb408a218b0affd,
@@ -1469,7 +1490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: b47035cbd52284b319b2a223144b49b9, type: 2}
-  numberStacked: 99
+  numberStacked: 1
   itemName: 
 --- !u!135 &1738414142
 SphereCollider:
