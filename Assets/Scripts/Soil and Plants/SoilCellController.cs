@@ -35,13 +35,16 @@ public class SoilCellController : MonoBehaviour {
 		
 		if (Input.GetButtonDown ("Fire1")) {
 			if (Vector3.Distance(transform.position, player.transform.position) < 2.0f) {
-				//instantiate seeds plant object at soilcell transform
-				//set plant objects parent to be soilcell
-				EventManager.TriggerEvent("Sow");
-				Debug.Log("triggered Sow");
+				if (player.GetComponent<MainCharacterController> ().itemSelected != null) {
+					if (player.GetComponent<MainCharacterController> ().itemSelected.item.isSeed) {
+						//instantiate seeds plant object at soilcell transform
+						//set plant objects parent to be soilcell
+						EventManager.TriggerEvent("RemoveSelected");
+						Debug.Log ("Remove Selected triggered");
+					}
+				}
 			}
 		}
-		Debug.Log ("onMousOver");
 	}
 	void OnMouseEnter() {
 //		rend.material.color = Color.red;

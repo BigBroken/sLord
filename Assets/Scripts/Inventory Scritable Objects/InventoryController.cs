@@ -8,7 +8,7 @@ public class InventoryController : MonoBehaviour {
 
 
 	public int size;
-	int selected;
+	public int selected;
 	public Item[] items;
 	public static InventoryController inventoryController;
 	public CanvasGroup canvasController;
@@ -16,6 +16,7 @@ public class InventoryController : MonoBehaviour {
 	public GameObject slot;
 	public GameObject[] slots;
 	public bool isActive;
+	public Image empty;
 
 	void Awake ()   
 	{
@@ -38,14 +39,16 @@ public class InventoryController : MonoBehaviour {
 			slots[i] = Instantiate(slot);
 			slots[i].transform.SetParent (slotPanel.transform, false);
 		}
-		selected = 1;
+		selected = 0;
 		isActive = false;
 		EventManager.StartListening ("ToggleInventory", toggleInventory);
+		EventManager.StartListening ("RemoveSelected", removeSelected);
 		canvasController = this.GetComponent<CanvasGroup> ();
 	}
 
 	void OnDestroy() {
 		EventManager.StopListening ("ToggleInventory", toggleInventory);
+		EventManager.StopListening ("RemoveSelected", removeSelected);
 	}
 
 	public void toggleInventory(){
@@ -89,6 +92,9 @@ public class InventoryController : MonoBehaviour {
 					items[i] = item.clone ();
 					updateSprite (i);
 					updateAmount(i);
+					if (i == selected) {
+						EventManager.TriggerEvent("UpdateHand");
+					}
 					break;
 				}
 			}
@@ -97,14 +103,19 @@ public class InventoryController : MonoBehaviour {
 		
 
 	public void updateSprite(int index) {
-		
-		slots [index].transform.GetChild(1).GetComponent<Image>().sprite = items[index].item.itemIcon;
+		if (items [index] != null) {
+			slots [index].transform.GetChild (1).GetComponent<Image> ().sprite = items [index].item.itemIcon;
+			slots [index].transform.GetChild (1).GetComponent<Image> ().CrossFadeAlpha (1f, 0.0f, true);
+		} else {
+			slots [index].transform.GetChild (1).GetComponent<Image> ().CrossFadeAlpha (0.0f, 0.0f, true);
+		}
+
 	}
 
 	public void updateAmount(int index) {
 		if (items[index] == null) {
 			slots [index].transform.GetChild (0).GetComponent<Text> ().text = "";
-		} else if (items [index].numberStacked == 0) {
+		} else if (items [index].numberStacked <= 0) {
 			removeAtIndex (index);
 		} else {
 			slots [index].transform.GetChild (0).GetComponent<Text> ().text = items [index].numberStacked.ToString();
@@ -113,15 +124,23 @@ public class InventoryController : MonoBehaviour {
 	}
 
 	public void removeAtIndex(int index) {
-		Destroy (items [index]);
+		items [index] = null;
 		updateAmount (index);
 		updateSprite (index);
+		if (index == selected) {
+			EventManager.TriggerEvent ("UpdateHand");
+			Debug.Log ("UpdateHand");
+		}
 	}
 
-	public void removeSelected(){
-		Destroy (items[selected]);
+	public void removeSelected() {
+		items [selected].numberStacked-= 1;
 		updateAmount (selected);
-		updateSprite (selected);
+	}
+
+	public void removeSelected( int amount) {
+		items [selected].numberStacked-= amount;
+		updateAmount (selected);
 	}
 
 	//this function is not tested
@@ -139,8 +158,14 @@ public class InventoryController : MonoBehaviour {
 
 
 	public Item selectItem(int index) {
-		int selected = index;
+		if (items [index] != null) {
+			selected = index;
+		}
 		return items [index];
+	}
+
+	public void handleSow() {
+		removeSelected();
 	}
 
 }
