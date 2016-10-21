@@ -1,26 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Plant {
+public class Plant : MonoBehaviour {
 
-
-	public string name;
-	public float age;
-	public float fullGrown;
-	public GameObject soilCell;
+	public string plantName;
+	public float growth;
 	public float growthRate;
+	public int stage;
+	public bool harvestable;
+	public GameObject soilCell;
+	public PlantData plantData;
+	public MeshFilter meshFilter;
 
-	public Plant(string plantName, float plantFullGrown, GameObject plantSoilCell) {
-		this.name = plantName;
-		this.fullGrown = plantFullGrown;
-		this.soilCell = plantSoilCell;
-		this.growthRate = 1.0f;
-		this.age = 0;
+	public void Start(){
+		soilCell = gameObject.transform.parent.gameObject;
+		growth = 0.0f;
+		growthRate = plantData.baseGrowthRate;
+		stage = 0;
+		meshFilter = GetComponent<MeshFilter> ();
 	}
 
-	public void Grow() {
-		//check if SoilCell conditions are met;
+	public void grow() {
 		//update growthRate
-		this.age += this.growthRate;
+		if (!harvestable) {
+			growthRate = plantData.baseGrowthRate;
+			growth += growthRate;
+			if (growth >= 100.0f) {
+				growth -= 100;
+				evolve ();
+			}
+		}
+	}
+
+	public void evolve() {
+		stage++;
+		if (stage == plantData.stages.Count - 1) {
+			harvestable = true;
+		} else {
+			meshFilter.mesh = plantData.stages [stage];
+		}
+	}
+
+	public void harvest() {
+		stage--;
+		harvestable = false;
+		//spawn plant item
 	}
 }

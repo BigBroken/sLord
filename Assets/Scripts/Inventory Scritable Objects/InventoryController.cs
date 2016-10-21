@@ -105,9 +105,11 @@ public class InventoryController : MonoBehaviour {
 	public void updateSprite(int index) {
 		if (items [index] != null) {
 			slots [index].transform.GetChild (1).GetComponent<Image> ().sprite = items [index].item.itemIcon;
-			slots [index].transform.GetChild (1).GetComponent<Image> ().CrossFadeAlpha (1f, 0.0f, true);
+			Color white = Color.white;
+			slots [index].transform.GetChild (1).GetComponent<Image> ().color = white;
 		} else {
-			slots [index].transform.GetChild (1).GetComponent<Image> ().CrossFadeAlpha (0.0f, 0.0f, true);
+			Color clear = Color.clear;
+			slots [index].transform.GetChild (1).GetComponent<Image> ().color = clear;
 		}
 
 	}

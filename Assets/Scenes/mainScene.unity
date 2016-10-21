@@ -274,6 +274,7 @@ MonoBehaviour:
   inventory: {fileID: 738547072}
   handLocation: {fileID: 322505}
   itemHeld: {fileID: 0}
+  indexSelected: 0
 --- !u!143 &233127196
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1340,6 +1341,15 @@ Prefab:
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1000014226340204, guid: 24b25d38bec59474c9c18242bb380ce5, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011873250556, guid: 24b25d38bec59474c9c18242bb380ce5,
+        type: 2}
+      propertyPath: isWatered
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65000010307981274, guid: 24b25d38bec59474c9c18242bb380ce5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 24b25d38bec59474c9c18242bb380ce5, type: 2}
@@ -1463,79 +1473,41 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalPosition.y
       value: 1.07
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalPosition.z
       value: 3.85
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.00000008146034
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+    - target: {fileID: 4000013844775000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
-      propertyPath: m_Name
-      value: Soy Bean pickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
-      propertyPath: m_TagString
-      value: Item
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+  m_ParentPrefab: {fileID: 100100000, guid: f202d7fb6f5c2459bba9c07b0149066a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1738414140 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
-  m_PrefabInternal: {fileID: 1738414139}
---- !u!114 &1738414141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1738414140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b683ab01e23c4bab8404f3d12be55cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: b47035cbd52284b319b2a223144b49b9, type: 2}
-  numberStacked: 1
-  itemName: 
---- !u!135 &1738414142
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1738414140}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.0000006
-  m_Center: {x: 0.00000059604645, y: -0.000000059604645, z: 0.0000006109476}
 --- !u!1 &1896533784 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011886790626, guid: 0632edb967be648d587ab3434ed48b7c,

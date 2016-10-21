@@ -3,49 +3,68 @@ using System.Collections;
 
 public class SoilCellController : MonoBehaviour {
 
-	public bool isWatered = false;
-//	public bool isMouseOver = false;
+	public bool isWatered;
+	public bool isSowed = false;
+	public float interactableDistance = 2.0f;
 	public GameObject player;
+	public MainCharacterController playerController;
 	private Renderer rend;
-	//public dictionary plant type
+	public GameObject plantObject;
+	public Plant plant;
+
 	void Start () {
 		rend = GetComponent<Renderer>();
 		if (player == null) {
 			player = GameObject.FindWithTag ("Player");
+			playerController = player.GetComponent<MainCharacterController> ();
 		}
-		EventManager.StartListening ("NextDay", NextDay);
+		EventManager.StartListening ("NextDay", nextDay);
+		isWatered = true;
 	}
 	void OnDisable(){
-		EventManager.StopListening ("NextDay", NextDay);
+		EventManager.StopListening ("NextDay", nextDay);
 	}
 	void OnDestroy(){
-		EventManager.StopListening ("NextDay", NextDay);
+		EventManager.StopListening ("NextDay", nextDay);
 	}
 
-	void NextDay () {
-		//check weather
-		isWatered = false;
+	void nextDay () {
+		Debug.Log ("NextDay called");
+		if (isWatered && isSowed) {
+			Debug.Log ("growCalled");
+			plant.grow ();
+		} else if(isWatered) {
+			//percentage chance for something wild to grow
+		} else {
+			//percentage chance for something wild to grow
+		}
+//		isWatered = false;
 	}
 
-	void Sow (int index) {
-		Debug.Log(SoilGridController.plants [index]);
+	void sow () {
+		plantObject = Instantiate(playerController.itemSelected.item.plant,gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+		plantObject.transform.parent = gameObject.transform;
+		isSowed = true;
+		EventManager.TriggerEvent("RemoveSelected");
+		plant = plantObject.GetComponent<Plant> ();
 	} 
-		
+
+	void raining() {
+		isWatered = true;
+	}
+
 	void OnMouseOver() {
-		
 		if (Input.GetButtonDown ("Fire1")) {
-			if (Vector3.Distance(transform.position, player.transform.position) < 2.0f) {
-				if (player.GetComponent<MainCharacterController> ().itemSelected != null) {
-					if (player.GetComponent<MainCharacterController> ().itemSelected.item.isSeed) {
-						//instantiate seeds plant object at soilcell transform
-						//set plant objects parent to be soilcell
-						EventManager.TriggerEvent("RemoveSelected");
-						Debug.Log ("Remove Selected triggered");
+			if (Vector3.Distance(transform.position, player.transform.position) < interactableDistance) {
+				if (playerController.itemSelected != null) {
+					if (playerController.itemSelected.item.isSeed && !isSowed) {
+						sow ();
 					}
 				}
 			}
 		}
 	}
+
 	void OnMouseEnter() {
 //		rend.material.color = Color.red;
 		Debug.Log ("mouseisout");

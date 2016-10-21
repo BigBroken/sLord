@@ -9,7 +9,8 @@ public class ConfirmSleep : MonoBehaviour {
 		btn.onClick.AddListener (click);
 	}
 	void click() {
-		EventManager.TriggerEvent ("Sleep");
+		EventManager.TriggerEvent ("NextDay");
+		EventManager.TriggerEvent ("SleepCancel");  //Temporary for development
 		EventManager.TriggerEvent ("UnPause");
 	}
 }

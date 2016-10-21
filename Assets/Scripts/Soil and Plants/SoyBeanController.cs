@@ -10,16 +10,15 @@ public class SoyBeanController : MonoBehaviour {
 	public Plant soyBean;
 
 	void Start () {
-		soyBean = new Plant (plantName, fullGrown, soilCell);
-		EventManager.StartListening ("Grow", soyBean.Grow);
+//		EventManager.StartListening ("Grow", soyBean);
 	}
 
 	void onDisable() {
-		EventManager.StopListening ("Grow", soyBean.Grow);
+//		EventManager.StopListening ("Grow", soyBean);
 	}
 
 	void onDestroy() {
-		EventManager.StopListening ("Grow", soyBean.Grow);
+//		EventManager.StopListening ("Grow", soyBean);
 	}	
 	// Update is called once per frame
 	void Update () {
