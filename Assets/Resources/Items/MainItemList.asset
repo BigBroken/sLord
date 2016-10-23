@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed7836acb23a4b8baefa263b7a4e4e8, type: 3}
   m_Name: MainItemList
   m_EditorClassIdentifier: 
-  itemList: []
+  itemList:
+  - {fileID: 11400000, guid: b47035cbd52284b319b2a223144b49b9, type: 2}

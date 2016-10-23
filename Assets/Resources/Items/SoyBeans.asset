@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: SoyBeans
   m_EditorClassIdentifier: 
   itemName: Soy Bean Seed
+  id: 1
   itemIcon: {fileID: 21300056, guid: a21b49a06e5cd4204a7143fd5bf4a904, type: 3}
   itemObject: {fileID: 1000013822879406, guid: edb65470a86c04e80a9032d3f424bbe2, type: 2}
   isUnique: 0

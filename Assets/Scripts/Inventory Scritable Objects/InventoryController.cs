@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
+//using System;
+      
 public class InventoryController : MonoBehaviour {
 
 
@@ -10,13 +11,18 @@ public class InventoryController : MonoBehaviour {
 	public int size;
 	public int selected;
 	public Item[] items;
-	public static InventoryController inventoryController;
+	public InventoryController inventoryController;
 	public CanvasGroup canvasController;
 	public GameObject slotPanel;
 	public GameObject slot;
 	public GameObject[] slots;
 	public bool isActive;
 	public Image empty;
+	public InventoryItemList inventoryItemDB;
+
+	public InventorySaveData inventorySavedata;
+
+
 
 	void Awake ()   
 	{
@@ -67,6 +73,15 @@ public class InventoryController : MonoBehaviour {
 		canvasController.alpha = convertedBool;
 
 	}
+		
+	public InventoryItem findItem(int id){
+		foreach (InventoryItem item in inventoryItemDB.itemList) {
+			if (item.id == id) {
+				return item;
+			}
+		}
+		return null;
+	}
 
 	public void addItem(Item item) {
 
@@ -100,7 +115,6 @@ public class InventoryController : MonoBehaviour {
 			}
 		} 
 	}
-		
 
 	public void updateSprite(int index) {
 		if (items [index] != null) {
@@ -170,4 +184,45 @@ public class InventoryController : MonoBehaviour {
 		removeSelected();
 	}
 
+
+	public void save() {
+		inventorySavedata = new InventorySaveData ();
+		inventorySavedata.ids = new int[size];
+		inventorySavedata.stacks = new int[size];
+		for (var i = 0; i < size; i++) {
+			if (items [i] != null) {
+				inventorySavedata.ids [i] = items [i].item.id;
+				inventorySavedata.stacks [i] = items [i].numberStacked;
+			}
+		}
+	}
+
+	public void load() {
+		for (var i = 0; i < size; i++) {
+			if (inventorySavedata.ids [i] != 0) {
+				InventoryItem tempInventoryItem = findItem (inventorySavedata.ids [i]);
+				Item tempItem = tempInventoryItem.itemObject.GetComponent<Item>().clone ();
+				items [i] = tempItem;
+				items [i].numberStacked = inventorySavedata.stacks [i];
+				updateSprite (i);
+				updateAmount (i);
+			}
+		}
+	}
+
+		
 }
+
+[System.Serializable]
+public class InventorySaveData {
+	//save and load variables
+	[SerializeField]
+	public int[] ids;
+	[SerializeField]
+	public int[] stacks;
+
+}
+	
+
+
+

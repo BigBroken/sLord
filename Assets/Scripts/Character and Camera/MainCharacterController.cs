@@ -13,6 +13,7 @@ public class MainCharacterController : MonoBehaviour {
 	public Transform handLocation;
 	public GameObject itemHeld;
 	public int indexSelected;
+	public gameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class MainCharacterController : MonoBehaviour {
 		offset = Camera.main.transform.position.y - transform.position.y;
 		EventManager.StartListening ("UpdateHand", updateHand);
 		indexSelected = 0;
+		gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<gameManager>();
 	}
 
 	void OnDisable() {
@@ -74,6 +76,12 @@ public class MainCharacterController : MonoBehaviour {
 //					Debug.Log("We hit something");
 //				}
 //			}
+		}
+		if (Input.GetButtonDown ("Test1")) {
+			gameManager.save ();
+		}
+		if (Input.GetButtonDown ("Test2")) {
+			gameManager.load ();
 		}
 	}
 

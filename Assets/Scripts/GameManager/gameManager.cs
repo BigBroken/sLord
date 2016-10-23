@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class gameManager : MonoBehaviour {
 
-	public static gameManager Instance;
+	public gameManager Instance;
 	private static pauseController pauseController;
-	private static UIController uIController;	
-	public static GameObject UI;
+	private static UIController uIController;
+	public SoilCellController SoilCellController;
+	public InventoryController inventoryController;
+
 
 
 
@@ -24,9 +29,22 @@ public class gameManager : MonoBehaviour {
 		}
 	}
 
-	public static void sleep () {
-//		pauseController.pause ();
-//		uIController.sleep ();
-//		sleepUI.gameObject.SetActive (true);
+	public void save () {
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Create (Application.persistentDataPath + "/saveInfo.dat");
+		inventoryController.save();
+		bf.Serialize (file, inventoryController.inventorySavedata);
+		file.Close();
 	}
+	public void load () {
+		if (File.Exists (Application.persistentDataPath + "/saveInfo.dat")) {
+			BinaryFormatter bf = new BinaryFormatter ();
+			FileStream file = File.Open (Application.persistentDataPath + "/saveInfo.dat", FileMode.Open);
+			inventoryController.inventorySavedata = (InventorySaveData)bf.Deserialize (file);
+			file.Close();
+			inventoryController.load ();
+		}
+	}
+
+
 }

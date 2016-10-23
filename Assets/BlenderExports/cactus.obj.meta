@@ -1,22 +1,17 @@
 fileFormatVersion: 2
-guid: 6c5366741ec1b584bb7cd3bcbce34ad2
-timeCreated: 1466334990
-licenseType: Store
+guid: 8ead0e527dfc54d29aa8aa2e1400477f
+timeCreated: 1477088743
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Mesh1_Group1_Model
-    100002: //RootNode
-    100004: default
-    400000: Mesh1_Group1_Model
-    400002: //RootNode
-    400004: default
-    2300000: Mesh1_Group1_Model
-    2300002: default
-    3300000: Mesh1_Group1_Model
-    3300002: default
-    4300000: Mesh1_Group1_Model
-    4300002: default
+    100000: //RootNode
+    100002: default
+    400000: //RootNode
+    400002: default
+    2300000: default
+    3300000: default
+    4300000: default
   materials:
     importMaterials: 1
     materialName: 0

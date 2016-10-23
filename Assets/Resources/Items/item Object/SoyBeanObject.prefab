@@ -21,9 +21,10 @@ GameObject:
   - 4: {fileID: 4000013993722596}
   - 33: {fileID: 33000010709250204}
   - 23: {fileID: 23000012349293404}
+  - 114: {fileID: 114000013197231938}
   m_Layer: 0
   m_Name: SoyBeanObject
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,3 +79,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013822879406}
   m_Mesh: {fileID: 4300000, guid: fb5409f8b8c348c4b8a8c012558e9df8, type: 3}
+--- !u!114 &114000013197231938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013822879406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b683ab01e23c4bab8404f3d12be55cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: b47035cbd52284b319b2a223144b49b9, type: 2}
+  numberStacked: 1
