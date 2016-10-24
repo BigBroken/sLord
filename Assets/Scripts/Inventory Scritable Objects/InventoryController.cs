@@ -22,8 +22,6 @@ public class InventoryController : MonoBehaviour {
 
 	public InventorySaveData inventorySavedata;
 
-
-
 	void Awake ()   
 	{
 		if (inventoryController == null)
@@ -44,6 +42,7 @@ public class InventoryController : MonoBehaviour {
 		for (int i = 0; i < slots.Length; i++) {
 			slots[i] = Instantiate(slot);
 			slots[i].transform.SetParent (slotPanel.transform, false);
+			slots [i].GetComponent<slotController> ().index = i;
 		}
 		selected = 0;
 		isActive = false;
@@ -58,7 +57,6 @@ public class InventoryController : MonoBehaviour {
 	}
 
 	public void toggleInventory(){
-		Debug.Log ("Inventory toggled");
 		isActive = !isActive;
 		Debug.Log (isActive);
 		if (isActive) {
@@ -116,6 +114,23 @@ public class InventoryController : MonoBehaviour {
 		} 
 	}
 
+	public void switchItems(int index1, int index2){
+		if (items [index1] != null) {
+			Item tempItem = items [index1].clone ();
+		
+				items [index1] = items [index2];
+			
+			items [index2] = tempItem;
+		}
+		updateSprite (index1);
+		updateSprite(index2);
+		updateAmount (index1);
+		updateAmount (index2);
+		if (index1 == selected || index2 == selected) {
+			EventManager.TriggerEvent ("UpdateHand");
+		}
+	}
+
 	public void updateSprite(int index) {
 		if (items [index] != null) {
 			slots [index].transform.GetChild (1).GetComponent<Image> ().sprite = items [index].item.itemIcon;
@@ -136,7 +151,6 @@ public class InventoryController : MonoBehaviour {
 		} else {
 			slots [index].transform.GetChild (0).GetComponent<Text> ().text = items [index].numberStacked.ToString();
 		}
-
 	}
 
 	public void removeAtIndex(int index) {
@@ -159,7 +173,7 @@ public class InventoryController : MonoBehaviour {
 		updateAmount (selected);
 	}
 
-	//this function is not tested
+//	tdhis function is not tested
 	public void removeItem(Item item) {
 		for (int i = 0; i < items.Length; i++) {
 			if (items [i] != null && items [i].item.itemName == item.item.itemName) {
