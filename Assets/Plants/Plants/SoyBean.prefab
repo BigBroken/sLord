@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012413879178}
-  - 23: {fileID: 23000014145307122}
   - 114: {fileID: 114000011235361334}
-  - 33: {fileID: 33000013535604576}
+  - 33: {fileID: 33000011711696434}
+  - 23: {fileID: 23000011236734272}
   m_Layer: 0
   m_Name: SoyBean
   m_TagString: Plant
@@ -36,13 +36,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011327959574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.91, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000014145307122
+--- !u!23 &23000011236734272
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -55,13 +55,13 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8e4f149d0221d4c77b8a9fb89dbcdd22, type: 2}
+  - {fileID: 2100000, guid: 1e043a4db008df444926793e465b1a06, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedWireframeHidden: 0
@@ -71,13 +71,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000013535604576
+--- !u!33 &33000011711696434
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011327959574}
-  m_Mesh: {fileID: 4300000, guid: 7e92cda1fb9a5446d93c688e34fe76d3, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!114 &114000011235361334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,4 +96,4 @@ MonoBehaviour:
   harvestable: 0
   soilCell: {fileID: 0}
   plantData: {fileID: 11400000, guid: 1c4b1a0117a404dd489c5ad221fcee6e, type: 2}
-  meshFilter: {fileID: 0}
+  meshFilter: {fileID: 3300000, guid: 7e92cda1fb9a5446d93c688e34fe76d3, type: 3}

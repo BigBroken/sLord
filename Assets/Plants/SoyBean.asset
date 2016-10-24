@@ -11,14 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053917875434f43f58035eb3399eb4f5, type: 3}
   m_Name: SoyBean
   m_EditorClassIdentifier: 
+  id: 1
   plantName: Soy Bean
   baseGrowthRate: 50
   plantPrefab: {fileID: 1000011327959574, guid: b734dea1770f5438da18ed0b623dff35,
     type: 2}
   stages:
-  - {fileID: 0}
+  - {fileID: 4300000, guid: 7e92cda1fb9a5446d93c688e34fe76d3, type: 3}
   - {fileID: 4300000, guid: 8ead0e527dfc54d29aa8aa2e1400477f, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  harvestItem: {fileID: 114000013554692160, guid: f202d7fb6f5c2459bba9c07b0149066a,
-    type: 2}
+  harvestItem: {fileID: 0}

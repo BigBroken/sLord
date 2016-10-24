@@ -36,10 +36,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011188531722}
   - 33: {fileID: 33000010869285734}
-  - 65: {fileID: 65000010307981274}
   - 23: {fileID: 23000010552837540}
   - 114: {fileID: 114000011873250556}
-  m_Layer: 0
+  - 65: {fileID: 65000010608934712}
+  - 65: {fileID: 65000010968245400}
+  m_Layer: 8
   m_Name: SoilCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +110,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014226340204}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65000010307981274
+--- !u!65 &65000010608934712
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,10 +118,22 @@ BoxCollider:
   m_GameObject: {fileID: 1000014226340204}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 113.489914, z: 2.5}
-  m_Center: {x: 0, y: 60, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65000010968245400
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014226340204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114000011873250556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +146,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWatered: 0
+  isSowed: 0
+  interactableDistance: 2
+  player: {fileID: 0}
+  playerController: {fileID: 0}
+  plantObject: {fileID: 0}
+  plant: {fileID: 0}
+  plantDataList: {fileID: 11400000, guid: 1f00c5b294c47495db1b1e945b203fb5, type: 2}
 --- !u!114 &114000012490088302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,3 +164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93dc29eeaa014e259d0802fe289e5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soilCells:
+  - {fileID: 114000011873250556}
+  soilData:
+    isWatered: 01
+    isSowed: 01
+    plantId: 01000000
+    stage: 00000000
+    growth:
+    - 0

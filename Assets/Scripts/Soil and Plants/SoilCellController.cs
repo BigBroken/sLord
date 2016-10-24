@@ -11,6 +11,7 @@ public class SoilCellController : MonoBehaviour {
 	private Renderer rend;
 	public GameObject plantObject;
 	public Plant plant;
+	public PlantDataList plantDataList;
 
 	void Start () {
 		rend = GetComponent<Renderer>();
@@ -41,13 +42,30 @@ public class SoilCellController : MonoBehaviour {
 //		isWatered = false;
 	}
 
-	void sow () {
-		plantObject = Instantiate(playerController.itemSelected.item.plant,gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+	public void sow () {
+		plantObject = Instantiate(playerController.itemSelected.item.plant, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
 		plantObject.transform.parent = gameObject.transform;
 		isSowed = true;
 		EventManager.TriggerEvent("RemoveSelected");
 		plant = plantObject.GetComponent<Plant> ();
 	} 
+	public void sow(int id) { 
+		plantObject = Instantiate(findPlantData (id).plantPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+		plantObject.transform.parent = gameObject.transform;
+		isSowed = true;
+		plant = plantObject.GetComponent<Plant> ();
+		Debug.Log (plant);
+
+	}
+	public PlantData findPlantData(int id) {
+		foreach (PlantData data in plantDataList.plantDataList) {
+			if (data.id == id) {
+				return data;
+			}
+		}
+		return null;
+
+	}
 
 	void raining() {
 		isWatered = true;

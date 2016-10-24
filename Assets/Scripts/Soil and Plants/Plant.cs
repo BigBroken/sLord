@@ -14,10 +14,9 @@ public class Plant : MonoBehaviour {
 
 	public void Start(){
 		soilCell = gameObject.transform.parent.gameObject;
-		growth = 0.0f;
 		growthRate = plantData.baseGrowthRate;
-		stage = 0;
 		meshFilter = GetComponent<MeshFilter> ();
+		meshFilter.mesh = plantData.stages [stage];
 	}
 
 	public void grow() {
@@ -27,23 +26,29 @@ public class Plant : MonoBehaviour {
 			growth += growthRate;
 			if (growth >= 100.0f) {
 				growth -= 100;
-				evolve ();
+				setStage (stage + 1);
 			}
 		}
 	}
 
-	public void evolve() {
-		stage++;
-		if (stage == plantData.stages.Count - 1) {
-			harvestable = true;
-		} else {
-			meshFilter.mesh = plantData.stages [stage];
+
+
+	public void setStage(int newStage) {
+		if (stage != newStage) {
+			stage++;
+			if (stage == plantData.stages.Count - 1) {
+				meshFilter.mesh = plantData.stages [stage];
+				harvestable = true;
+			} else {
+				meshFilter.mesh = plantData.stages [stage];
+			}
 		}
 	}
 
 	public void harvest() {
 		stage--;
 		harvestable = false;
+		growth = 0.0f;
 		//spawn plant item
 	}
 }

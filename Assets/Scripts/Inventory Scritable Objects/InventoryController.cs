@@ -208,6 +208,8 @@ public class InventoryController : MonoBehaviour {
 				updateAmount (i);
 			}
 		}
+		selected = inventorySavedata.selected;
+		EventManager.TriggerEvent("UpdateHand");
 	}
 
 		
@@ -216,6 +218,8 @@ public class InventoryController : MonoBehaviour {
 [System.Serializable]
 public class InventorySaveData {
 	//save and load variables
+	[SerializeField]
+	public int selected;
 	[SerializeField]
 	public int[] ids;
 	[SerializeField]

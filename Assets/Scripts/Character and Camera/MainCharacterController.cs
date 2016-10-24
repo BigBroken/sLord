@@ -16,6 +16,9 @@ public class MainCharacterController : MonoBehaviour {
 	public gameManager gameManager;
 
 	// Use this for initialization
+	void Awake () {
+		DontDestroyOnLoad(gameObject);
+	}
 	void Start () {
 		controller = GetComponent<CharacterController>();
 		offset = Camera.main.transform.position.y - transform.position.y;
