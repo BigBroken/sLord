@@ -73,10 +73,13 @@ public class SoilCellController : MonoBehaviour {
 
 	void OnMouseOver() {
 		if (Input.GetButtonDown ("Fire1")) {
-			if (Vector3.Distance(transform.position, player.transform.position) < interactableDistance) {
+			if (isSowed && plant.harvestable) {
+				plant.harvest ();
+			} else if (Vector3.Distance (transform.position, player.transform.position) < interactableDistance) {
 				if (playerController.itemSelected != null) {
 					if (playerController.itemSelected.item.isSeed && !isSowed) {
 						sow ();
+					
 					}
 				}
 			}

@@ -58,6 +58,7 @@ GameObject:
   - 114: {fileID: 114000012465665486}
   - 225: {fileID: 225000013236722198}
   - 114: {fileID: 114000013073032512}
+  - 114: {fileID: 114000011544147016}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -152,6 +153,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000011544147016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014007545866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599ab0ae1d82b413f8f88839c51b433a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!114 &114000012465665486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,6 +185,7 @@ MonoBehaviour:
   destroyOnUse: 1
   isSeed: 0
   plant: {fileID: 0}
+  value: 0
 --- !u!114 &114000013073032512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,8 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b219f57b45fa34202a85771b35c0f960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryController: {fileID: 114000013762653500, guid: 720bfd01955814342bb408a218b0affd,
-    type: 2}
+  inventoryController: {fileID: 0}
 --- !u!222 &222000010170338580
 CanvasRenderer:
   m_ObjectHideFlags: 1

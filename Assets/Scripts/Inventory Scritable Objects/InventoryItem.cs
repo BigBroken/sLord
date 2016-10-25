@@ -5,6 +5,7 @@ using System.Collections;
 public class InventoryItem : ScriptableObject 
 {
 	public string itemName = "New Item";   
+	public string description = "";
 	public int id = 0;// unique id for inventory
 	public Sprite itemIcon = null;                                           //  What the item will look like in the inventory
 	public GameObject itemObject = null;                                         //  Optional slot for a PreFab to instantiate when discarding
@@ -13,6 +14,7 @@ public class InventoryItem : ScriptableObject
 	public bool destroyOnUse = true;                                          
 	public bool isSeed = false;
 	public GameObject plant = null;
+	public int value = 0;
 
 
 }

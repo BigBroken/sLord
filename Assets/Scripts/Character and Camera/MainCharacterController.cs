@@ -92,6 +92,7 @@ public class MainCharacterController : MonoBehaviour {
 		//item pickups
 		if(other.gameObject.tag == "Item"){
 			inventory.addItem (other.gameObject.GetComponent<Item>());
+			Destroy (other.gameObject);
 		}
 	}
 

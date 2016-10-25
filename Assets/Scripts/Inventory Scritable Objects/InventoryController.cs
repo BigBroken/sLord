@@ -56,7 +56,7 @@ public class InventoryController : MonoBehaviour {
 		EventManager.StopListening ("RemoveSelected", removeSelected);
 	}
 
-	public void toggleInventory(){
+	public void toggleInventory() {
 		isActive = !isActive;
 		Debug.Log (isActive);
 		if (isActive) {

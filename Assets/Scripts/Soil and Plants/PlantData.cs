@@ -10,6 +10,6 @@ public class PlantData : ScriptableObject {
 	public float baseGrowthRate;
 	public GameObject plantPrefab;
 	public List<Mesh> stages;
-	public Item harvestItem;
+	public InventoryItem harvestItem;
 
 }

@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour {
 			growth += growthRate;
 			if (growth >= 100.0f) {
 				growth -= 100;
-				setStage (stage + 1);
+				setStage (stage++);
 			}
 		}
 	}
@@ -34,21 +34,18 @@ public class Plant : MonoBehaviour {
 
 
 	public void setStage(int newStage) {
-		if (stage != newStage) {
-			stage++;
 			if (stage == plantData.stages.Count - 1) {
 				meshFilter.mesh = plantData.stages [stage];
 				harvestable = true;
 			} else {
 				meshFilter.mesh = plantData.stages [stage];
 			}
-		}
 	}
 
 	public void harvest() {
-		stage--;
+		setStage (stage--);
 		harvestable = false;
 		growth = 0.0f;
-		//spawn plant item
+		GameObject crop = (GameObject)Instantiate (plantData.harvestItem.itemObject, gameObject.transform.position, gameObject.transform.rotation);
 	}
 }
