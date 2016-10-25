@@ -18,10 +18,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 	public void OnBeginDrag (PointerEventData eventData)
 	{
 		gameObject.GetComponent<CanvasGroup> ().blocksRaycasts = false;
-	
 		ghost = (Instantiate (gameObject, gameObject.transform.position, gameObject.transform.rotation)as GameObject);
 		ghost.transform.SetParent (transform.parent, false);
 		ghost.GetComponent<Image> ().color = Color.clear;
+		gameObject.transform.GetChild (1).gameObject.GetComponent<Image>().color = Color.clear;
+		gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().color = Color.clear;
+
 		startPosition = transform.position;
 		startParent = transform.parent;
 	}
@@ -42,8 +44,13 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
 	public void OnEndDrag (PointerEventData eventData)
 	{
+		int tempSlotIndex = gameObject.GetComponent<slotController> ().index;
+		Debug.Log (tempSlotIndex);
+		inventoryController.updateAmount (tempSlotIndex);
+		inventoryController.updateSprite (tempSlotIndex);
 		GetComponent<CanvasGroup>().blocksRaycasts = true;
 		Destroy (ghost);
+
 	}
 
 	#endregion

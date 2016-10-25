@@ -40,6 +40,9 @@ public class EventManager : MonoBehaviour {
 		{
 			eventDictionary = new Dictionary<string, UnityEvent>();
 		}
+		foreach (KeyValuePair<string, UnityEvent> entry in eventDictionary){
+			Debug.Log (entry);
+		}
 	}
 
 	public static void StartListening (string eventName, UnityAction listener)
@@ -74,5 +77,7 @@ public class EventManager : MonoBehaviour {
 		{
 			thisEvent.Invoke ();
 		}
+
 	}
+
 }

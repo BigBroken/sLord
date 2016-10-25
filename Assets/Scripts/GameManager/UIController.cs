@@ -4,6 +4,22 @@ using System.Collections;
 public class UIController : MonoBehaviour {
 
 	public GameObject sleepUI;
+	public GameObject shopUI;
+	public UIController uiController;
+
+
+	void Awake ()   
+	{
+		if (uiController == null)
+		{
+			DontDestroyOnLoad(gameObject);
+			uiController = this;
+		}
+		else if (uiController != this) 
+		{
+			Destroy (gameObject);
+		}
+	}
 
 	void OnEnable () 
 	{
@@ -29,7 +45,9 @@ public class UIController : MonoBehaviour {
 	}
 
 	void Update() {
-		if(Input.GetButtonDown("Inventory")) {
+		if(Input.GetButtonUp("Inventory")) {
+			Debug.Log ("inventory pressed");
+			Debug.Log ("Trigger toggle Inventory");
 			EventManager.TriggerEvent ("ToggleInventory");
 		}
 	}

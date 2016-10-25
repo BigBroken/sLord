@@ -133,9 +133,9 @@ public class InventoryController : MonoBehaviour {
 
 	public void updateSprite(int index) {
 		if (items [index] != null) {
+			Debug.Log (items [index].item);
 			slots [index].transform.GetChild (1).GetComponent<Image> ().sprite = items [index].item.itemIcon;
-			Color white = Color.white;
-			slots [index].transform.GetChild (1).GetComponent<Image> ().color = white;
+			slots [index].transform.GetChild (1).GetComponent<Image> ().color = Color.white;
 		} else {
 			Color clear = Color.clear;
 			slots [index].transform.GetChild (1).GetComponent<Image> ().color = clear;
@@ -150,6 +150,7 @@ public class InventoryController : MonoBehaviour {
 			removeAtIndex (index);
 		} else {
 			slots [index].transform.GetChild (0).GetComponent<Text> ().text = items [index].numberStacked.ToString();
+			slots [index].transform.GetChild (0).GetComponent<Text> ().color = Color.white;
 		}
 	}
 
@@ -214,6 +215,7 @@ public class InventoryController : MonoBehaviour {
 	public void load() {
 		for (var i = 0; i < size; i++) {
 			if (inventorySavedata.ids [i] != 0) {
+				Debug.Log(inventorySavedata.ids [i]);
 				InventoryItem tempInventoryItem = findItem (inventorySavedata.ids [i]);
 				Item tempItem = tempInventoryItem.itemObject.GetComponent<Item>().clone ();
 				items [i] = tempItem;
