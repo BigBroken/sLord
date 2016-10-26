@@ -6,6 +6,7 @@ public class UIController : MonoBehaviour {
 	public GameObject sleepUI;
 	public GameObject shopUI;
 	public UIController uiController;
+	public CanvasGroup shopCanvasController;
 
 
 	void Awake ()   
@@ -25,16 +26,21 @@ public class UIController : MonoBehaviour {
 	{
 		EventManager.StartListening ("SleepUI", sleep);
 		EventManager.StartListening ("SleepCancel", sleepCancel);
+		EventManager.StartListening ("ToggleShopUI", toggleShopUI);
 	}
 	void OnDisable () 
 	{
 		EventManager.StopListening ("SleepUI", sleep);
 		EventManager.StopListening ("SleepCancel", sleepCancel);
+		EventManager.StopListening ("ToggleShopUI", toggleShopUI);
+
 	}
 	void OnDestroy()
 	{
 		EventManager.StopListening ("SleepUI", sleep);
 		EventManager.StopListening ("SleepCancel", sleepCancel);
+		EventManager.StopListening ("ToggleShopUI", toggleShopUI);
+
 	}
 
 	void sleep(){
@@ -51,4 +57,8 @@ public class UIController : MonoBehaviour {
 			EventManager.TriggerEvent ("ToggleInventory");
 		}
 	}
+	void toggleShopUI() {
+
+	}
+		
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   itemName: Apple
-  description: Sweet and tart
+  description: sweet and tart
   id: 2
   itemIcon: {fileID: 21300050, guid: a21b49a06e5cd4204a7143fd5bf4a904, type: 3}
   itemObject: {fileID: 1000013822879406, guid: af13bc12ef95e466f898b1701eeeb1f7, type: 2}
@@ -21,4 +21,4 @@ MonoBehaviour:
   destroyOnUse: 1
   isSeed: 0
   plant: {fileID: 1000011327959574, guid: b734dea1770f5438da18ed0b623dff35, type: 2}
-  value: 100
+  value: 120

@@ -846,7 +846,6 @@ GameObject:
   - 4: {fileID: 395691954}
   - 114: {fileID: 395691955}
   - 114: {fileID: 395691956}
-  - 114: {fileID: 395691957}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameManager
@@ -892,20 +891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9157343557024469481c55f61854ede9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &395691957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 395691953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee0a9f245570b4be789dbed4a0f6a68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sleepUI: {fileID: 773853010}
-  shopUI: {fileID: 1795454605}
-  uiController: {fileID: 0}
 --- !u!1 &412998988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,6 +2133,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4000014127113196, guid: 24b25d38bec59474c9c18242bb380ce5,
     type: 2}
   m_PrefabInternal: {fileID: 1473578048}
+--- !u!1 &1650579866 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010645454890, guid: 0632edb967be648d587ab3434ed48b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 337147524}
+--- !u!114 &1650579867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650579866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0a9f245570b4be789dbed4a0f6a68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sleepUI: {fileID: 773853010}
+  shopUI: {fileID: 1795454605}
+  uiController: {fileID: 0}
+  shopCanvasController: {fileID: 1795454609}
 --- !u!224 &1650579870 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000013586338698, guid: 0632edb967be648d587ab3434ed48b7c,
@@ -2163,13 +2168,15 @@ GameObject:
   - 224: {fileID: 1795454606}
   - 222: {fileID: 1795454608}
   - 114: {fileID: 1795454607}
+  - 225: {fileID: 1795454609}
+  - 114: {fileID: 1795454610}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1795454606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2186,8 +2193,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 207.32396, y: 0.5633837}
-  m_SizeDelta: {x: -210, y: 158.35211}
+  m_AnchoredPosition: {x: 234, y: 0}
+  m_SizeDelta: {x: -303, y: 126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795454607
 MonoBehaviour:
@@ -2222,6 +2229,35 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1795454605}
+--- !u!225 &1795454609
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1795454605}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &1795454610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1795454605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679a65efb74d247ceb19ef3d84145191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopUIController: {fileID: 0}
+  slots: []
+  shopSlot: {fileID: 1000013094462550, guid: 674256bae65ba4a59874ff4187a6c903, type: 2}
+  slotPanel: {fileID: 0}
+  slotCanvi: []
+  size: 25
+  shopCanvasController: {fileID: 1795454609}
 --- !u!1 &1820258951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,8 +2293,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00029563997, y: -45}
-  m_SizeDelta: {x: -94.42, y: -259}
+  m_AnchoredPosition: {x: 2.5675, y: -98.11}
+  m_SizeDelta: {x: -153.04, y: -350.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820258953
 MonoBehaviour:
@@ -2273,17 +2309,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
+    m_Left: 19
+    m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 56, y: 56}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 7
+  m_ConstraintCount: 3
 --- !u!114 &1820258954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2453,6 +2489,7 @@ GameObject:
   - 33: {fileID: 2143041290}
   - 65: {fileID: 2143041289}
   - 23: {fileID: 2143041288}
+  - 114: {fileID: 2143041292}
   m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
@@ -2521,3 +2558,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!114 &2143041292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2143041287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74adb81e7eef443579df72e6b6f813fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopData: {fileID: 11400000, guid: f7f5930ab825346ae9f2526f57c38a03, type: 2}
+  interactableDistance: 0
+  player: {fileID: 0}
+  shopUIController: {fileID: 1795454610}
