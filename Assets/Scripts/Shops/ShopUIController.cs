@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class ShopUIController : MonoBehaviour {
 
-	public ShopUIController shopUIController;
+//	public ShopUIController shopUIController;
+	public MainCharacterStats mainCharacterStats;
+	public InventoryController inventoryController;
 
 	public GameObject[] slots;
 	public GameObject shopSlot;
@@ -12,21 +14,21 @@ public class ShopUIController : MonoBehaviour {
 	public CanvasGroup[] slotCanvi;
 	public bool shopOpen = false;
 	public int size = 25;
-
+	public ShopData shopData;
 	public CanvasGroup shopCanvasController;
 
 
-	void Awake ()   
-	{
-		if (shopUIController == null)
-		{
-			shopUIController = this;
-		}
-		else if (shopUIController != this) 
-		{
-			Destroy (gameObject);
-		}
-	}
+//	void Awake ()   
+//	{
+//		if (shopUIController == null)
+//		{
+//			shopUIController = this;
+//		}
+//		else if (shopUIController != this) 
+//		{
+//			Destroy (gameObject);
+//		}
+//	}
 
 	void Start() {
 		slotPanel = gameObject.transform.GetChild (0).gameObject;
@@ -35,6 +37,9 @@ public class ShopUIController : MonoBehaviour {
 		for (var i = 0; i < 25; i++) {
 			slots[i] = Instantiate(shopSlot);
 			slots[i].transform.SetParent (slotPanel.transform, false);
+			ShopSlotHandler slotHandler = slots [i].GetComponent<ShopSlotHandler> ();
+			slotHandler.index = i;
+			slotHandler.shopUIController = this.GetComponent<ShopUIController> ();
 			slotCanvi[i] = slots [i].GetComponent<CanvasGroup> ();
 		}
 		EventManager.StartListening ("ToggleInventory", exitShop);
@@ -46,9 +51,20 @@ public class ShopUIController : MonoBehaviour {
 		EventManager.StopListening ("ToggleInventory", exitShop);
 	}
 
+	public void purchaseItem(int index){
+//		Debug.Log ("item" + index + " purchased");
+		int price = (int)((float)shopData.ItemsForSale [index].value * shopData.priceMultiplier);
+		if (mainCharacterStats.mon >= price) {
+			mainCharacterStats.mon -= price;
+			inventoryController.addItem (shopData.ItemsForSale [index]);
+
+		}
+	}
+
 	public void activateShopUI(ShopData data) {
 		if (!shopOpen) {
 			setItems (data);
+			shopData = data;
 			shopCanvasController.interactable = true;
 			shopCanvasController.blocksRaycasts = true;
 			shopCanvasController.alpha = 1.0f;
@@ -64,6 +80,7 @@ public class ShopUIController : MonoBehaviour {
 			slots[i].transform.GetChild (0).gameObject.GetComponent<Text> ().text = price.ToString("N0");
 			slotCanvi [i].alpha = 1;
 			slotCanvi [i].interactable = true;
+			slotCanvi [i].blocksRaycasts = true;
 		}
 	}
 	public void exitShop(){

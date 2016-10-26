@@ -34,10 +34,8 @@ public class MainCharacterStats : MonoBehaviour {
 		mon = 0;
 	}
 	void OnDestroy(){
-//		EventManager.StopListening ("UpdateMon", updateMon);
 	}
 	void OnDisable() {
-//		EventManager.StopListening ("UpdateMon", updateMon);
 	}
 
 

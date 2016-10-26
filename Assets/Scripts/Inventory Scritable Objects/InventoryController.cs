@@ -114,6 +114,10 @@ public class InventoryController : MonoBehaviour {
 		} 
 	}
 
+	public void addItem(InventoryItem item){
+		addItem (item.itemObject.GetComponent<Item> ());
+	}
+
 	public void switchItems(int index1, int index2){
 		if (items [index1] != null) {
 			Item tempItem = items [index1].clone ();

@@ -2424,7 +2424,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 234, y: -3.1329603}
+  m_AnchoredPosition: {x: 237, y: -15}
   m_SizeDelta: {x: -303, y: 114.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795454607
@@ -2482,7 +2482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679a65efb74d247ceb19ef3d84145191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopUIController: {fileID: 0}
   slots: []
   shopSlot: {fileID: 1000013094462550, guid: 674256bae65ba4a59874ff4187a6c903, type: 2}
   slotPanel: {fileID: 0}

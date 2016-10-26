@@ -7,8 +7,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
 	private GameObject ghost;
 	public InventoryController inventoryController;
-	Vector3 startPosition;
-	Transform startParent;
+//	Vector3 startPosition;
+//	Transform startParent;
 	void Start(){
 		inventoryController = transform.parent.transform.parent.transform.parent.GetComponent<InventoryController> ();
 	}
@@ -24,8 +24,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		gameObject.transform.GetChild (1).gameObject.GetComponent<Image>().color = Color.clear;
 		gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().color = Color.clear;
 
-		startPosition = transform.position;
-		startParent = transform.parent;
+//		startPosition = transform.position;
+//		startParent = transform.parent;
 	}
 
 	#endregion
