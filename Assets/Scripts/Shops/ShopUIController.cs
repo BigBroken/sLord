@@ -10,6 +10,7 @@ public class ShopUIController : MonoBehaviour {
 	public GameObject shopSlot;
 	public GameObject slotPanel;
 	public CanvasGroup[] slotCanvi;
+	public bool shopOpen = false;
 	public int size = 25;
 
 	public CanvasGroup shopCanvasController;
@@ -19,7 +20,6 @@ public class ShopUIController : MonoBehaviour {
 	{
 		if (shopUIController == null)
 		{
-			DontDestroyOnLoad(gameObject);
 			shopUIController = this;
 		}
 		else if (shopUIController != this) 
@@ -37,26 +37,45 @@ public class ShopUIController : MonoBehaviour {
 			slots[i].transform.SetParent (slotPanel.transform, false);
 			slotCanvi[i] = slots [i].GetComponent<CanvasGroup> ();
 		}
-
+		EventManager.StartListening ("ToggleInventory", exitShop);
+	}
+	void OnDestroy(){
+		EventManager.StopListening ("ToggleInventory", exitShop);
+	}
+	void OnDisable(){
+		EventManager.StopListening ("ToggleInventory", exitShop);
 	}
 
 	public void activateShopUI(ShopData data) {
-		EventManager.TriggerEvent ("Pause");
-		setItems (data);
-		shopCanvasController.interactable = true;
-		shopCanvasController.blocksRaycasts = true;
-		shopCanvasController.alpha = 1.0f;
+		if (!shopOpen) {
+			setItems (data);
+			shopCanvasController.interactable = true;
+			shopCanvasController.blocksRaycasts = true;
+			shopCanvasController.alpha = 1.0f;
+			EventManager.TriggerEvent ("ToggleInventory");
+			shopOpen = true;
+		}
 	}
 
 	public void setItems(ShopData data) {
 		for (var i = 0; i < data.ItemsForSale.Count; i++) {
-			Debug.Log (slots [i]);
 			slots[i].transform.GetChild(1).gameObject.GetComponent<Image>().sprite = data.ItemsForSale [i].itemIcon;
 			int price = (int)((float)data.ItemsForSale [i].value * data.priceMultiplier);
-			slots[i].transform.GetChild (0).gameObject.GetComponent<Text> ().text = price.ToString();
+			slots[i].transform.GetChild (0).gameObject.GetComponent<Text> ().text = price.ToString("N0");
 			slotCanvi [i].alpha = 1;
 			slotCanvi [i].interactable = true;
 		}
+	}
+	public void exitShop(){
+		if (shopOpen) {
+			deactivateShopUI ();
+		}
+	}
+	public void deactivateShopUI() {
+		shopCanvasController.interactable = false;
+		shopCanvasController.blocksRaycasts = false;
+		shopCanvasController.alpha = 0f;
+		shopOpen = false;
 	}
 
 }

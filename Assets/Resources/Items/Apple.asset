@@ -21,4 +21,4 @@ MonoBehaviour:
   destroyOnUse: 1
   isSeed: 0
   plant: {fileID: 1000011327959574, guid: b734dea1770f5438da18ed0b623dff35, type: 2}
-  value: 120
+  value: 400

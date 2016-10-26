@@ -2256,6 +2256,7 @@ MonoBehaviour:
   shopSlot: {fileID: 1000013094462550, guid: 674256bae65ba4a59874ff4187a6c903, type: 2}
   slotPanel: {fileID: 0}
   slotCanvi: []
+  shopOpen: 0
   size: 25
   shopCanvasController: {fileID: 1795454609}
 --- !u!1 &1820258951
