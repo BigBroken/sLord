@@ -6,7 +6,7 @@ public class UIController : MonoBehaviour {
 	public GameObject sleepUI;
 	public GameObject shopUI;
 	public UIController uiController;
-	public CanvasGroup shopCanvasController;
+
 
 
 	void Awake ()   

@@ -3,26 +3,63 @@ using System.Collections;
 
 public class MainCharacterStats : MonoBehaviour {
 
-	public static GameUIController gameUI;
-	public int health;
-	public int energy;
-	public int mon;
+	public StatusUIController statusUI;
+	int _health;
+	int _energy;
+	int _mon;
+
+	public int mon{
+		get{ return _mon; }
+		set{ _mon = value;
+			updateMon ();
+		}
+	}
+	public int health{
+		get{ return _health; }
+		set{ _health = value;
+			updateHealth ();
+		}
+	}
+	public int energy{
+		get{ return _energy; }
+		set{ _energy = value;
+			updateEnergy ();
+		}
+	}
 	// Use this for initialization
+
 	void Start () {
 		health = 150;
 		energy = 20;
 		mon = 0;
-		EventManager.StartListening ("UpdateMon", updateMon);
 	}
 	void OnDestroy(){
-		EventManager.StopListening ("UpdateMon", updateMon);
+//		EventManager.StopListening ("UpdateMon", updateMon);
 	}
 	void OnDisable() {
-		EventManager.StopListening ("UpdateMon", updateMon);
+//		EventManager.StopListening ("UpdateMon", updateMon);
 	}
 
+
 	public void updateMon() {
-		gameUI.updateMon(mon);
+		statusUI.updateMon(mon);
+	}
+	public void updateHealth() {
+		statusUI.updateHealth(health);
+	}
+	public void updateEnergy() {
+		statusUI.updateEnergy(energy);
+	}
+
+	public void setHealth(int newHealth){
+//		health = newHealth;
+//		StatusUIController.updateHealth (health);
+	}
+
+	void Update(){
+		if (Input.GetButtonUp ("Select1")) {
+			mon += 500;
+		}
 	}
 
 }
