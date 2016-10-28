@@ -8,6 +8,7 @@ public class MainCharacterStats : MonoBehaviour {
 	int _energy;
 	int _mon;
 
+
 	public int mon{
 		get{ return _mon; }
 		set{ _mon = value;

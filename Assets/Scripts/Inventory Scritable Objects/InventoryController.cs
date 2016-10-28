@@ -17,6 +17,7 @@ public class InventoryController : MonoBehaviour {
 	public GameObject slot;
 	public GameObject[] slots;
 	public bool isActive;
+	public bool isShopOpen;
 	public Image empty;
 	public InventoryItemList inventoryItemDB;
 
@@ -48,6 +49,7 @@ public class InventoryController : MonoBehaviour {
 		isActive = false;
 		EventManager.StartListening ("ToggleInventory", toggleInventory);
 		EventManager.StartListening ("RemoveSelected", removeSelected);
+
 		canvasController = this.GetComponent<CanvasGroup> ();
 	}
 
@@ -170,7 +172,7 @@ public class InventoryController : MonoBehaviour {
 
 	public void removeSelected() {
 		items [selected].numberStacked-= 1;
-		updateAmount (selected);
+		updateAmount (selected); 
 	}
 
 	public void removeSelected( int amount) {

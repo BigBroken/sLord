@@ -68,7 +68,7 @@ public class ShopUIController : MonoBehaviour {
 			shopCanvasController.interactable = true;
 			shopCanvasController.blocksRaycasts = true;
 			shopCanvasController.alpha = 1.0f;
-			EventManager.TriggerEvent ("ToggleInventory");
+			inventoryController.toggleInventory ();
 			shopOpen = true;
 		}
 	}

@@ -8,7 +8,6 @@ public class ShopSlotHandler : MonoBehaviour, IPointerClickHandler
 	public int index;
 
 	public void OnPointerClick(PointerEventData eventData){
-		Debug.Log (eventData);
 		shopUIController.purchaseItem (index);
 	}
 	//code for double click
