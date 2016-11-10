@@ -164,7 +164,7 @@ public class InventoryItemEditor : EditorWindow {
 	void AddItem (string itemName) 
 	{
 		
-		string path = AssetDatabase.GenerateUniqueAssetPath ("Assets/Items/"+itemName+".asset");
+		string path = AssetDatabase.GenerateUniqueAssetPath ("Assets/Resources/Items/"+itemName+".asset");
 		InventoryItem newItem = ScriptableObject.CreateInstance<InventoryItem>();
 		newItem.itemName = itemName;
 		AssetDatabase.CreateAsset(newItem, path);

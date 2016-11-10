@@ -12,8 +12,8 @@ public class TimeController : MonoBehaviour {
 
 	void Start() {
 		//in order to stop a coroutine a reference to it must be stored
-		time = -1;
-		quarterHourSeconds = 0.1f;
+		time = 0;
+		quarterHourSeconds = 5f;
 		passTime = StartCoroutine(incrementTime() );
 		EventManager.StartListening ("NextDay", nextDay);
 	}

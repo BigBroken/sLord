@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
+[CreateAssetMenu(menuName = "InventoryItem",fileName = "defaultInventoryItem")]
 public class InventoryItem : ScriptableObject 
 {
 	public string itemName = "New Item";   
@@ -15,6 +15,9 @@ public class InventoryItem : ScriptableObject
 	public bool isSeed = false;
 	public GameObject plant = null;
 	public int value = 0;
-
+	public bool isWeapon = false;
+	public float castTime = 0.0f;
+	public GameObject weapon = null;
+	public int damage = 0;
 
 }

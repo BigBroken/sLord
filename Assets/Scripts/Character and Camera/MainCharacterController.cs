@@ -14,6 +14,7 @@ public class MainCharacterController : MonoBehaviour {
 	public GameObject itemHeld;
 	public int indexSelected;
 	public gameManager gameManager;
+	public CastingBar castBar;
 
 	// Use this for initialization
 	void Awake () {
@@ -69,16 +70,13 @@ public class MainCharacterController : MonoBehaviour {
 		}
 		//using items
 		if(Input.GetButtonDown("Fire1")) {
-			
-//			planting code should probably delete
-//			if (itemSelected != null && itemSelected.item.isSeed ) {
-//				 //or whatever you're doing for your ray
-//				float distance = offset + 10.0f; //however far your ray shoots
-//				int layerMask = 1<< 8;  // "7" here needing to be replaced by whatever layer it is you're wanting to use
-//				if (Physics.Raycast (Camera.main.ScreenToWorldPoint(Input.mousePosition) , Camera.main.transform.forward , distance, layerMask)) {
-//					Debug.Log("We hit something");
-//				}
-//			}
+
+			if (itemSelected && itemSelected.item.isWeapon) {
+				castBar.startCast (itemSelected.item);
+			}
+		}
+		if (Input.GetButtonUp ("Fire1")) {
+			//set casting to false
 		}
 		if (Input.GetButtonDown ("Test1")) {
 			gameManager.save ();

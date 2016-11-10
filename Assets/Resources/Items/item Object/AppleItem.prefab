@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 4da4e188ccd6f41c7bfd5f2c979e5d92, type: 2}
   numberStacked: 1
+  enablePickup: 1
 --- !u!135 &135000011591956158
 SphereCollider:
   m_ObjectHideFlags: 1
