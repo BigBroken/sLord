@@ -12,8 +12,8 @@ public class Seeker : Enemy {
 	
 	// Update is called once per frame
 	void Update () {
-		targetDistance = Vector3.Distance (target.transform.position, transform.position);
-		if (targetDistance <= chaseDistance) {
+		targetDistance = Vector3.Distance (target.transform.localPosition, transform.position);
+		if (targetDistance < chaseDistance) {
 			agent.SetDestination (target.transform.position);
 		} else {
 			agent.ResetPath ();

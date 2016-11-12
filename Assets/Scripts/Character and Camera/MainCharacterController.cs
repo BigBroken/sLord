@@ -4,6 +4,7 @@ using System.Collections;
 public class MainCharacterController : MonoBehaviour {
 
 	public float moveSpeed = 4f;
+	public float originalSpeed;
 	private Vector3 moveDirection;
 	private Vector3 faceDirection;
 	private CharacterController controller;
@@ -22,18 +23,22 @@ public class MainCharacterController : MonoBehaviour {
 	}
 	void Start () {
 		controller = GetComponent<CharacterController>();
+		originalSpeed = moveSpeed;
 		offset = Camera.main.transform.position.y - transform.position.y;
 		EventManager.StartListening ("UpdateHand", updateHand);
+		EventManager.StartListening ("UseItem", useSelected);
 		indexSelected = 0;
 		gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<gameManager>();
 	}
 
 	void OnDisable() {
 		EventManager.StopListening ("UpdateHand", updateHand);
+		EventManager.StopListening ("UseItem", useSelected);
 	}
 
 	void OnDestroy() {
 		EventManager.StopListening ("UpdateHand", updateHand);
+		EventManager.StopListening ("UseItem", useSelected);
 	}
 	
 	// Update is called once per frame
@@ -49,34 +54,50 @@ public class MainCharacterController : MonoBehaviour {
 
 		//item selection
 		if(Input.GetButtonDown("Select1")) {
-			indexSelected = 0;
-			updateHand ();
+			if (indexSelected != 0) {
+				indexSelected = 0;
+				updateHand ();
+			}
+
 		}
 		if(Input.GetButtonDown("Select2")) {
-			indexSelected = 1;
-			updateHand ();
+			if (indexSelected != 1) {
+				indexSelected = 1;
+				updateHand ();
+			}
 		}
 		if(Input.GetButtonDown("Select3")) {
-			indexSelected = 2;
-			updateHand ();
+			if (indexSelected != 2) {
+				indexSelected = 2;
+				updateHand ();
+			}
 		}
 		if(Input.GetButtonDown("Select4")) {
-			indexSelected = 3;
-			updateHand ();
+			if (indexSelected != 3) {
+				indexSelected = 3;
+				updateHand ();
+			}
 		}
 		if(Input.GetButtonDown("Select5")) {
-			indexSelected = 4;
-			updateHand ();
+			if (indexSelected != 4) {
+				indexSelected = 4;
+				updateHand ();
+			}
 		}
 		//using items
 		if(Input.GetButtonDown("Fire1")) {
 
 			if (itemSelected && itemSelected.item.isWeapon) {
+				//check if items off cool down else
 				castBar.startCast (itemSelected.item);
+				moveSpeed = moveSpeed * itemSelected.item.movementMod;
+
 			}
 		}
 		if (Input.GetButtonUp ("Fire1")) {
-			//set casting to false
+			castBar.casting = false;
+			moveSpeed = originalSpeed;
+
 		}
 		if (Input.GetButtonDown ("Test1")) {
 			gameManager.save ();
@@ -100,8 +121,12 @@ public class MainCharacterController : MonoBehaviour {
 		Destroy (itemHeld);
 		itemSelected = inventory.selectItem (indexSelected);
 		if (itemSelected != null) {
-			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position, handLocation.rotation) as GameObject;
+			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position + itemSelected.item.offset, handLocation.rotation * itemSelected.item.rotation) as GameObject;
 			itemHeld.transform.parent = gameObject.transform;
 		}
+		castBar.casting = false;
+	}
+	public void useSelected() {
+		itemHeld.GetComponent<Item>().use ();
 	}
 }

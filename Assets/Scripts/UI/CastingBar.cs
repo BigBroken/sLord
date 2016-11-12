@@ -8,7 +8,7 @@ public class CastingBar : MonoBehaviour {
 	private Vector2 endPos;
 
 	public Image castImage;
-	public bool casting = true;
+	public bool casting;
 
 	public RectTransform castTransform;
 	// Use this for initialization
@@ -19,6 +19,7 @@ public class CastingBar : MonoBehaviour {
 		Debug.Log (startPos);
 	}
 	public void startCast(InventoryItem item) {
+		casting = true;
 		StartCoroutine (Cast (item));
 	}
 	
@@ -35,7 +36,12 @@ public class CastingBar : MonoBehaviour {
 			progress += rate * Time.deltaTime;
 			timeLeft += Time.deltaTime;
 			yield return null;
+
+		}
+		if (progress >= 1.0) {
+			EventManager.TriggerEvent ("UseItem");
 		}
 		castTransform.position = endPos;
+
 	}
 }

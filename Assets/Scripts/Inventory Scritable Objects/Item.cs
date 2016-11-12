@@ -8,7 +8,7 @@ public class Item : MonoBehaviour  {
 	public bool enablePickup = false;
 	private SphereCollider pickUp;
 
-	void Start() {
+	public virtual void Start() {
 		pickUp = gameObject.GetComponent<SphereCollider>() as SphereCollider;
 		if (enablePickup) {
 
@@ -30,4 +30,10 @@ public class Item : MonoBehaviour  {
 		pickUp.enabled = false;
 	}
 
+	public virtual void use() {
+		if (item.destroyOnUse) {
+			EventManager.TriggerEvent ("RemoveSelected");
+		}
+		
+	}
 }

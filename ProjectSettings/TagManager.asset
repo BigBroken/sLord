@@ -8,6 +8,8 @@ TagManager:
   - Item
   - Soil
   - GameManager
+  - Weapon
+  - Projectile
   layers:
   - Default
   - TransparentFX

@@ -104,7 +104,7 @@ public class InventoryController : MonoBehaviour {
 	   if (!itemStacked) {
 			for (int i = 0; i < items.Length; i++) {
 				if (items [i] == null) {
-					items[i] = item.clone ();
+					items[i] = item.item.itemObject.GetComponent<Item>();
 					updateSprite (i);
 					updateAmount(i);
 					if (i == selected) {
@@ -122,7 +122,7 @@ public class InventoryController : MonoBehaviour {
 
 	public void switchItems(int index1, int index2){
 		if (items [index1] != null) {
-			Item tempItem = items [index1].clone ();
+			Item tempItem = items [index1].item.itemObject.GetComponent<Item>();
 		
 				items [index1] = items [index2];
 			
@@ -223,7 +223,7 @@ public class InventoryController : MonoBehaviour {
 			if (inventorySavedata.ids [i] != 0) {
 				Debug.Log(inventorySavedata.ids [i]);
 				InventoryItem tempInventoryItem = findItem (inventorySavedata.ids [i]);
-				Item tempItem = tempInventoryItem.itemObject.GetComponent<Item>().clone ();
+				Item tempItem = tempInventoryItem.itemObject.GetComponent<Item>();
 				items [i] = tempItem;
 				items [i].numberStacked = inventorySavedata.stacks [i];
 				updateSprite (i);
