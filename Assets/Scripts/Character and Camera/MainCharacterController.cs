@@ -121,7 +121,7 @@ public class MainCharacterController : MonoBehaviour {
 		Destroy (itemHeld);
 		itemSelected = inventory.selectItem (indexSelected);
 		if (itemSelected != null) {
-			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position + itemSelected.item.offset, handLocation.rotation * itemSelected.item.rotation) as GameObject;
+			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position + itemSelected.item.offset, this.transform.rotation * itemSelected.item.rotation) as GameObject;
 			itemHeld.transform.parent = gameObject.transform;
 		}
 		castBar.casting = false;

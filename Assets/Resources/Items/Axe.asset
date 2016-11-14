@@ -17,7 +17,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300070, guid: a21b49a06e5cd4204a7143fd5bf4a904, type: 3}
   itemObject: {fileID: 141820, guid: f971ea7c137f3f54c9a0963bca7602ec, type: 2}
   offset: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  rotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   isUnique: 0
   maxStack: 1
   destroyOnUse: 0
