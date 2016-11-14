@@ -23,5 +23,6 @@ public class InventoryItem : ScriptableObject
 	public GameObject weapon = null;
 	public int damage = 0;
 	public float movementMod = 1.0f;
+	public GameObject projectile = null;
 
 }

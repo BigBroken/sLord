@@ -29,3 +29,4 @@ MonoBehaviour:
   weapon: {fileID: 141820, guid: f971ea7c137f3f54c9a0963bca7602ec, type: 2}
   damage: 50
   movementMod: 0.6
+  projectile: {fileID: 1000013675846050, guid: f00abb3d7c76a4eda98c86261fbb387e, type: 2}
