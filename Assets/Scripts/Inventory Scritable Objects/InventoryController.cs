@@ -107,8 +107,6 @@ public class InventoryController : MonoBehaviour {
 				if (items [i] == null) {
 					GameObject newItem = (GameObject)Instantiate (item.item.itemObject, inventoryContainer);
 					items [i] = newItem.GetComponent<Item> ();
-					Debug.Log (items[i]);
-					Debug.Log (items [i].numberStacked);
 					updateSprite (i);
 					updateAmount(i);
 					if (i == selected) {
@@ -229,8 +227,8 @@ public class InventoryController : MonoBehaviour {
 			if (inventorySavedata.ids [i] != 0) {
 				Debug.Log(inventorySavedata.ids [i]);
 				InventoryItem tempInventoryItem = findItem (inventorySavedata.ids [i]);
-				Item tempItem = tempInventoryItem.itemObject.GetComponent<Item>();
-				items [i] = tempItem;
+				GameObject tempItem = (GameObject)Instantiate (tempInventoryItem.itemObject, inventoryContainer);
+				items [i] = tempItem.GetComponent<Item>();
 				items [i].numberStacked = inventorySavedata.stacks [i];
 				updateSprite (i);
 				updateAmount (i);
