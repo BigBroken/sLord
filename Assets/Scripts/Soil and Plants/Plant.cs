@@ -46,6 +46,6 @@ public class Plant : MonoBehaviour {
 		setStage (stage--);
 		harvestable = false;
 		growth = 0.0f;
-		GameObject crop = (GameObject)Instantiate (plantData.harvestItem.itemObject, gameObject.transform.position, gameObject.transform.rotation);
+		Instantiate (plantData.harvestItem.itemObject, gameObject.transform.position, gameObject.transform.rotation);
 	}
 }

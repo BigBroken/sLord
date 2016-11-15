@@ -118,11 +118,16 @@ public class MainCharacterController : MonoBehaviour {
 
 	//updates the hand to hold selected item
 	void updateHand() {
-		Destroy (itemHeld);
+		if (itemHeld != null) {
+			itemHeld.transform.parent = inventory.inventoryContainer;
+		}
 		itemSelected = inventory.selectItem (indexSelected);
 		if (itemSelected != null) {
-			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position + itemSelected.item.offset, this.transform.rotation * itemSelected.item.rotation) as GameObject;
+			itemHeld = itemSelected.gameObject;
+//			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position + itemSelected.item.offset, this.transform.rotation * itemSelected.item.rotation) as GameObject;
 			itemHeld.transform.parent = gameObject.transform;
+			itemHeld.transform.position = handLocation.position;
+			itemHeld.transform.rotation = this.transform.rotation * itemSelected.item.rotation;
 		}
 		castBar.casting = false;
 	}

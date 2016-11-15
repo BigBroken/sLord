@@ -20,6 +20,7 @@ public class InventoryController : MonoBehaviour {
 	public bool isShopOpen;
 	public Image empty;
 	public InventoryItemList inventoryItemDB;
+	public Transform inventoryContainer;
 
 	public InventorySaveData inventorySavedata;
 
@@ -104,7 +105,10 @@ public class InventoryController : MonoBehaviour {
 	   if (!itemStacked) {
 			for (int i = 0; i < items.Length; i++) {
 				if (items [i] == null) {
-					items[i] = item.item.itemObject.GetComponent<Item>();
+					GameObject newItem = (GameObject)Instantiate (item.item.itemObject, inventoryContainer);
+					items [i] = newItem.GetComponent<Item> ();
+					Debug.Log (items[i]);
+					Debug.Log (items [i].numberStacked);
 					updateSprite (i);
 					updateAmount(i);
 					if (i == selected) {
@@ -122,9 +126,11 @@ public class InventoryController : MonoBehaviour {
 
 	public void switchItems(int index1, int index2){
 		if (items [index1] != null) {
-			Item tempItem = items [index1].item.itemObject.GetComponent<Item>();
+			Debug.Log (items [index1]);
+			Debug.Log (items [index2]);
+			Item tempItem = items [index1];
 		
-				items [index1] = items [index2];
+			items [index1] = items [index2];
 			
 			items [index2] = tempItem;
 		}
@@ -139,7 +145,6 @@ public class InventoryController : MonoBehaviour {
 
 	public void updateSprite(int index) {
 		if (items [index] != null) {
-			Debug.Log (items [index].item);
 			slots [index].transform.GetChild (1).GetComponent<Image> ().sprite = items [index].item.itemIcon;
 			slots [index].transform.GetChild (1).GetComponent<Image> ().color = Color.white;
 		} else {
@@ -195,6 +200,7 @@ public class InventoryController : MonoBehaviour {
 
 
 	public Item selectItem(int index) {
+		Debug.Log (items [index]);
 		if (items [index] != null) {
 			selected = index;
 		}

@@ -8,13 +8,13 @@ public class SoilCellController : MonoBehaviour {
 	public float interactableDistance = 2.0f;
 	public GameObject player;
 	public MainCharacterController playerController;
-	private Renderer rend;
+//	private Renderer rend;
 	public GameObject plantObject;
 	public Plant plant;
 	public PlantDataList plantDataList;
 
 	void Start () {
-		rend = GetComponent<Renderer>();
+//		rend = GetComponent<Renderer>();
 		if (player == null) {
 			player = GameObject.FindWithTag ("Player");
 			playerController = player.GetComponent<MainCharacterController> ();

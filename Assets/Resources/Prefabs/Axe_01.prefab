@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 459742}
   - 33: {fileID: 3331064}
   - 23: {fileID: 2353606}
-  - 135: {fileID: 135000011177294130}
   - 114: {fileID: 114000010208668020}
   - 135: {fileID: 135000010202292036}
   - 114: {fileID: 114000013340828026}
@@ -155,18 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quaternion: {x: 0, y: 0, z: 0, w: 0}
 --- !u!135 &135000010202292036
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.06
-  m_Center: {x: 0, y: 0, z: -0.04}
---- !u!135 &135000011177294130
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
