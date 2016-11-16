@@ -225,7 +225,6 @@ public class InventoryController : MonoBehaviour {
 	public void load() {
 		for (var i = 0; i < size; i++) {
 			if (inventorySavedata.ids [i] != 0) {
-				Debug.Log(inventorySavedata.ids [i]);
 				InventoryItem tempInventoryItem = findItem (inventorySavedata.ids [i]);
 				GameObject tempItem = (GameObject)Instantiate (tempInventoryItem.itemObject, inventoryContainer);
 				items [i] = tempItem.GetComponent<Item>();
