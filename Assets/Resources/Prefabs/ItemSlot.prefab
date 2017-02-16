@@ -16,11 +16,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 224000013836684188}
-  - 222: {fileID: 222000010333191442}
-  - 114: {fileID: 114000011021294576}
+  - component: {fileID: 224000013836684188}
+  - component: {fileID: 222000010333191442}
+  - component: {fileID: 114000011021294576}
   m_Layer: 5
   m_Name: Amount
   m_TagString: Untagged
@@ -33,11 +33,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 224000012926165082}
-  - 222: {fileID: 222000011576114430}
-  - 114: {fileID: 114000010038764398}
+  - component: {fileID: 224000012926165082}
+  - component: {fileID: 222000011576114430}
+  - component: {fileID: 114000010038764398}
   m_Layer: 5
   m_Name: ItemSprite
   m_TagString: Untagged
@@ -50,15 +50,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 224000012987888314}
-  - 222: {fileID: 222000010170338580}
-  - 114: {fileID: 114000011296100992}
-  - 114: {fileID: 114000012465665486}
-  - 225: {fileID: 225000013236722198}
-  - 114: {fileID: 114000013073032512}
-  - 114: {fileID: 114000011544147016}
+  - component: {fileID: 224000012987888314}
+  - component: {fileID: 222000010170338580}
+  - component: {fileID: 114000011296100992}
+  - component: {fileID: 225000013236722198}
+  - component: {fileID: 114000013073032512}
+  - component: {fileID: 114000011544147016}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -165,28 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
---- !u!114 &114000012465665486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014007545866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e48c9d1562b8415d876451e5c4e37d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: New Item
-  description: 
-  id: 0
-  itemIcon: {fileID: 0}
-  itemObject: {fileID: 0}
-  isUnique: 0
-  maxStack: 1
-  destroyOnUse: 1
-  isSeed: 0
-  plant: {fileID: 0}
-  value: 0
 --- !u!114 &114000013073032512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,10 +203,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 224000012987888314}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -244,12 +221,12 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224000013836684188}
   - {fileID: 224000012926165082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -264,10 +241,10 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 224000012987888314}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 23.389603, y: -28.6}

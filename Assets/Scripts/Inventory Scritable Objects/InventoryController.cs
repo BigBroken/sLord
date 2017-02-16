@@ -6,8 +6,6 @@ using UnityEngine.UI;
       
 public class InventoryController : MonoBehaviour {
 
-
-
 	public int size;
 	public int selected;
 	public Item[] items;

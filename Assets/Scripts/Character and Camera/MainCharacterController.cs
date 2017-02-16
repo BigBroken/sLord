@@ -87,7 +87,7 @@ public class MainCharacterController : MonoBehaviour {
 		//using items
 		if(Input.GetButtonDown("Fire1")) {
 
-			if (itemSelected && itemSelected.item.isWeapon) {
+			if (itemSelected && itemSelected.item.isUsable) {
 				//check if items off cool down else
 				castBar.startCast (itemSelected.item);
 				moveSpeed = moveSpeed * itemSelected.item.movementMod;
@@ -120,6 +120,7 @@ public class MainCharacterController : MonoBehaviour {
 	void updateHand() {
 		if (itemHeld != null) {
 			itemHeld.transform.parent = inventory.inventoryContainer;
+
 		}
 		itemSelected = inventory.selectItem (indexSelected);
 		if (itemSelected != null) {
@@ -128,6 +129,8 @@ public class MainCharacterController : MonoBehaviour {
 			itemHeld.transform.parent = gameObject.transform;
 			itemHeld.transform.position = handLocation.position;
 			itemHeld.transform.rotation = this.transform.rotation * itemSelected.item.rotation;
+			itemHeld.GetComponent<Item> ().disablePickUp ();
+
 		}
 		castBar.casting = false;
 	}

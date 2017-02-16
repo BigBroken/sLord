@@ -16,9 +16,16 @@ MonoBehaviour:
   id: 2
   itemIcon: {fileID: 21300050, guid: a21b49a06e5cd4204a7143fd5bf4a904, type: 3}
   itemObject: {fileID: 1000013822879406, guid: af13bc12ef95e466f898b1701eeeb1f7, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
   isUnique: 0
   maxStack: 5
+  value: 400
   destroyOnUse: 1
   isSeed: 0
   plant: {fileID: 1000011327959574, guid: b734dea1770f5438da18ed0b623dff35, type: 2}
-  value: 400
+  isUsable: 1
+  castTime: 0.5
+  damage: 0
+  movementMod: 1
+  projectile: {fileID: 0}
