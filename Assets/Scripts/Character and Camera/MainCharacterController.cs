@@ -5,8 +5,8 @@ public class MainCharacterController : MonoBehaviour {
 
 	public float moveSpeed = 4f;
 	public float originalSpeed;
-	private Vector3 moveDirection;
-	private Vector3 faceDirection;
+	public Vector3 moveDirection;
+	public Vector3 faceDirection;
 	private CharacterController controller;
 	private float offset;
 	public Item itemSelected;
@@ -16,6 +16,10 @@ public class MainCharacterController : MonoBehaviour {
 	public int indexSelected;
 	public gameManager gameManager;
 	public CastingBar castBar;
+	public float dashSpeed;
+	public Vector3 dashDirection;
+	public float maxDashTime;
+	public float dashTime;
 
 	// Use this for initialization
 	void Awake () {
@@ -51,7 +55,10 @@ public class MainCharacterController : MonoBehaviour {
 		moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		moveDirection = moveDirection.normalized * moveSpeed;
 		controller.Move (moveDirection * Time.deltaTime);
-
+		if (dashTime < maxDashTime) {
+			controller.Move (dashDirection * dashSpeed * Time.deltaTime);
+			dashTime += Time.deltaTime;
+		}
 		//item selection
 		if(Input.GetButtonDown("Select1")) {
 			if (indexSelected != 0) {
@@ -83,6 +90,9 @@ public class MainCharacterController : MonoBehaviour {
 				indexSelected = 4;
 				updateHand ();
 			}
+		}
+		if (Input.GetButtonDown ("Dash")) {
+			gameManager.dash.use ();
 		}
 		//using items
 		if(Input.GetButtonDown("Fire1")) {
@@ -136,5 +146,14 @@ public class MainCharacterController : MonoBehaviour {
 	}
 	public void useSelected() {
 		itemHeld.GetComponent<Item>().use ();
+	}
+	public void dash(float distance, float speed) {
+		maxDashTime = distance / speed;
+		dashDirection = transform.forward;
+		Debug.Log (faceDirection);
+		Debug.Log (dashDirection);
+		dashSpeed = speed;
+		dashTime = 0.0f;
+
 	}
 }

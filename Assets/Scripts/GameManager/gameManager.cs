@@ -13,6 +13,9 @@ public class gameManager : MonoBehaviour {
 	private static UIController uIController;
 	public SoilGridController soilGridController;
 	public InventoryController inventoryController;
+	public MainCharacterController mainCharacterController;
+	public MainCharacterStats mainCharacterStats;
+	public Ability dash;
 
 
 

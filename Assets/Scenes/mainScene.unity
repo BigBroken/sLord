@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 233127195}
   - component: {fileID: 233127196}
   - component: {fileID: 233127197}
+  - component: {fileID: 233127198}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -274,13 +275,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   originalSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  faceDirection: {x: 0, y: 0, z: 0}
   itemSelected: {fileID: 0}
   inventory: {fileID: 738547072}
   handLocation: {fileID: 322505}
   itemHeld: {fileID: 0}
   indexSelected: 0
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 395691955}
   castBar: {fileID: 925037192}
+  dashSpeed: 0
+  dashDirection: {x: 0, y: 0, z: 0}
+  maxDashTime: 0
+  dashTime: 0
 --- !u!143 &233127196
 CharacterController:
   m_ObjectHideFlags: 0
@@ -310,6 +317,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusUI: {fileID: 266850796}
+--- !u!114 &233127198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233127190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351bfd27150fa45ea9308ccbcda67e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 395691955}
+  cooldown: 8
+  energy: 0
+  ready: 1
+  distance: 5
+  speed: 25
+  skillResetTime: 2
+  skillResetWindow: 0.5
+  skillResetReady: 0
+  skillFail: 0
 --- !u!1 &266850794
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +1005,9 @@ MonoBehaviour:
   mainScene: mainScene
   soilGridController: {fileID: 754030241}
   inventoryController: {fileID: 738547072}
+  mainCharacterController: {fileID: 233127195}
+  mainCharacterStats: {fileID: 233127197}
+  dash: {fileID: 233127198}
 --- !u!114 &395691956
 MonoBehaviour:
   m_ObjectHideFlags: 0

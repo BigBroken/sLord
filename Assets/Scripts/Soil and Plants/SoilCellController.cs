@@ -49,6 +49,7 @@ public class SoilCellController : MonoBehaviour {
 		EventManager.TriggerEvent("RemoveSelected");
 		plant = plantObject.GetComponent<Plant> ();
 	} 
+
 	public void sow(int id) { 
 		plantObject = Instantiate(findPlantData (id).plantPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
 		plantObject.transform.parent = gameObject.transform;
@@ -57,6 +58,7 @@ public class SoilCellController : MonoBehaviour {
 		Debug.Log (plant);
 
 	}
+
 	public PlantData findPlantData(int id) {
 		foreach (PlantData data in plantDataList.plantDataList) {
 			if (data.id == id) {
@@ -64,7 +66,6 @@ public class SoilCellController : MonoBehaviour {
 			}
 		}
 		return null;
-
 	}
 
 	void raining() {
