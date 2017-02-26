@@ -25,7 +25,7 @@ public class Dash : Ability {
 	// Update is called once per frame
 	public override void use ()
 	{
-		if (ready) {
+		if (ready && gameManager.mainCharacterStats.energy - energy >= 0) {
 			ready = false;
 			gameManager.mainCharacterController.dash (distance, speed);
 			gameManager.mainCharacterStats.energy -= energy;

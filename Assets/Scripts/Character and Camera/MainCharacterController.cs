@@ -16,15 +16,20 @@ public class MainCharacterController : MonoBehaviour {
 	public int indexSelected;
 	public gameManager gameManager;
 	public CastingBar castBar;
+
+	//dash variables
 	public float dashSpeed;
 	public Vector3 dashDirection;
-	public float maxDashTime;
 	public float dashTime;
+	public float dashStart;
+	//set by dash script
+	public bool isDashing;
 
 	// Use this for initialization
 	void Awake () {
 		DontDestroyOnLoad(gameObject);
 	}
+
 	void Start () {
 		controller = GetComponent<CharacterController>();
 		originalSpeed = moveSpeed;
@@ -55,9 +60,9 @@ public class MainCharacterController : MonoBehaviour {
 		moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		moveDirection = moveDirection.normalized * moveSpeed;
 		controller.Move (moveDirection * Time.deltaTime);
-		if (dashTime < maxDashTime) {
+		if ( dashStart < dashTime) {
 			controller.Move (dashDirection * dashSpeed * Time.deltaTime);
-			dashTime += Time.deltaTime;
+			dashStart += Time.deltaTime;
 		}
 		//item selection
 		if(Input.GetButtonDown("Select1")) {
@@ -94,9 +99,10 @@ public class MainCharacterController : MonoBehaviour {
 		if (Input.GetButtonDown ("Dash")) {
 			gameManager.dash.use ();
 		}
+
 		//using items
 		if(Input.GetButtonDown("Fire1")) {
-
+			
 			if (itemSelected && itemSelected.item.isUsable) {
 				//check if items off cool down else
 				castBar.startCast (itemSelected.item);
@@ -107,8 +113,8 @@ public class MainCharacterController : MonoBehaviour {
 		if (Input.GetButtonUp ("Fire1")) {
 			castBar.casting = false;
 			moveSpeed = originalSpeed;
-
 		}
+
 		if (Input.GetButtonDown ("Test1")) {
 			gameManager.save ();
 		}
@@ -119,11 +125,14 @@ public class MainCharacterController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		//item pickups
-		if(other.gameObject.tag == "Item"){
+		if(other.gameObject.tag == "Item") {
 			inventory.addItem (other.gameObject.GetComponent<Item>());
 			Destroy (other.gameObject);
 		}
-	}
+		if (isDashing && other.gameObject.tag == "Soil") {
+			other.GetComponent<SoilCellController> ().sow ();
+		}
+	}	
 
 
 	//updates the hand to hold selected item
@@ -148,12 +157,16 @@ public class MainCharacterController : MonoBehaviour {
 		itemHeld.GetComponent<Item>().use ();
 	}
 	public void dash(float distance, float speed) {
-		maxDashTime = distance / speed;
+		dashTime = distance / speed;
 		dashDirection = transform.forward;
-		Debug.Log (faceDirection);
-		Debug.Log (dashDirection);
 		dashSpeed = speed;
-		dashTime = 0.0f;
+		StartCoroutine(dashing (dashTime));
+		dashStart = 0.0f;
 
+	}
+	public IEnumerator dashing(float time) {
+		isDashing = true;
+		yield return new WaitForSeconds (time);
+		isDashing = false;
 	}
 }

@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
 	public GameObject sleepUI;
 	public GameObject shopUI;
 	public UIController uiController;
+	public StatusUIController statusUI;
+	public Image hitImage;
+	public Color hitColor;
+	public IEnumerator fadeCo;
+	public float fadeTime;
+
 
 
 
@@ -20,6 +27,9 @@ public class UIController : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
+	}
+	void Start (){
+		hitColor = hitImage.color;
 	}
 
 	void OnEnable () 
@@ -59,6 +69,20 @@ public class UIController : MonoBehaviour {
 	}
 	void toggleShopUI() {
 
+	}
+	public void hit(float hits, float maxhits, float hitRecoveryTime){
+		if (hits == maxhits) {
+			StopCoroutine (fadeCo);
+		} else {
+			fadeCo = fadeLoop(hits/maxhits, 100);
+			StartCoroutine (fadeCo);
+		}
+
+	}
+	public IEnumerator fadeLoop(float alpha1, float alpha2) {
+		while (true) {
+			yield return new WaitForSeconds (10);
+		}
 	}
 		
 }
