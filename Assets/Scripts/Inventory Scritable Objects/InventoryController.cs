@@ -196,7 +196,6 @@ public class InventoryController : MonoBehaviour {
 
 
 	public Item selectItem(int index) {
-		Debug.Log (items [index]);
 		if (items [index] != null) {
 			selected = index;
 		}

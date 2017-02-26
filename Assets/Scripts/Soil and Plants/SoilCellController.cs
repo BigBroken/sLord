@@ -43,7 +43,7 @@ public class SoilCellController : MonoBehaviour {
 	}
 
 	public void sow () {
-		if (playerController.itemSelected && playerController.itemSelected.item.plant) {
+		if (!isSowed && playerController.itemSelected && playerController.itemSelected.item.plant) {
 			plantObject = Instantiate (playerController.itemSelected.item.plant, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
 			plantObject.transform.parent = gameObject.transform;
 			isSowed = true;
