@@ -19,7 +19,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
   isUnique: 0
-  maxStack: 5
+  maxStack: 99
   value: 10
   destroyOnUse: 0
   isSeed: 1

@@ -15,7 +15,7 @@ public class shopController : MonoBehaviour {
 	// Update is called once per frame
 
 	void OnMouseOver () {
-		if (Input.GetButtonDown ("Fire1")) {
+		if (Input.GetButtonDown ("Interact")) {
 			if (Vector3.Distance (player.transform.position, gameObject.transform.position) <= interactableDistance) {
 				shopUIController.activateShopUI (shopData);
 			}

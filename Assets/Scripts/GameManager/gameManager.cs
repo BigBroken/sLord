@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour {
 
 	public static gameManager Instance;
 	public string mainScene;
-	private static pauseController pauseController;
+	public static pauseController pauseController;
 	private static UIController uIController;
 	public SoilGridController soilGridController;
 	public InventoryController inventoryController;

@@ -144,7 +144,6 @@ public class MainCharacterController : MonoBehaviour {
 		itemSelected = inventory.selectItem (indexSelected);
 		if (itemSelected != null) {
 			itemHeld = itemSelected.gameObject;
-//			itemHeld = Instantiate (itemSelected.item.itemObject, handLocation.position + itemSelected.item.offset, this.transform.rotation * itemSelected.item.rotation) as GameObject;
 			itemHeld.transform.parent = gameObject.transform;
 			itemHeld.transform.position = handLocation.position;
 			itemHeld.transform.rotation = this.transform.rotation * itemSelected.item.rotation;

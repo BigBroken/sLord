@@ -57,8 +57,6 @@ public class SoilCellController : MonoBehaviour {
 		plantObject.transform.parent = gameObject.transform;
 		isSowed = true;
 		plant = plantObject.GetComponent<Plant> ();
-		Debug.Log (plant);
-
 	}
 
 	public PlantData findPlantData(int id) {
